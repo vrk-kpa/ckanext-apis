@@ -67,3 +67,12 @@ To run the tests and produce a coverage report, first make sure you have
 coverage installed in your virtualenv (``pip install coverage``) then run::
 
     nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.apis --cover-inclusive --cover-erase --cover-tests
+
+
+----------------------------------------
+Copying and License
+----------------------------------------
+
+This material is copyright (c) 2019 Population Register Centre, Finland.
+
+ckanext-apis is licensed under the GNU Affero General Public License (AGPL) v3.0
