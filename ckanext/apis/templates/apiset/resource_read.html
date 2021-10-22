@@ -27,20 +27,7 @@
   {% block resource_read_title %}
     <h1 class="page-heading">{{ h.extra_translation(res, 'name', fallback=h.resource_display_name) }}</h1>
   {% endblock %}
-  {% block resource_read_url %}
-    {%- for field in schema.resource_fields -%}
-      {% if field.field_name == 'maturity' %}
-        {% for choice in field.choices %}
-          {% if choice.value == res.maturity %}
-            <h4>{{ _('Maturity') }}: <span class="label label-primary">{{ _(choice.label) }}</span></h4>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-    {% if res.url %}
-      <p class="muted ellipsis">{{ _('URL:') }} <a class="resource-url-analytics resource-type-"{{ res.resource_type }} href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a></p>
-    {% endif %}
-  {% endblock %}
+
   <div class="prose notes" property="rdfs:label">
     {% set description = h.extra_translation(res, 'description', markdown=True) %}
     {% if description %}
@@ -61,7 +48,7 @@
 {% block resource_additional_information %}
 
   <div class="module-content">
-    <h2>{{ _('Documentation') }}</h2>
+    <h2>{{ _('API User Guide') }}</h2>
     <div class="prose notes" property="rdfs:label">
       {% set documentation = h.extra_translation(res, 'documentation', markdown=True) %}
       {% if documentation %}
