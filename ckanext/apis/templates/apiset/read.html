@@ -12,7 +12,7 @@
   {% if (h.scheming_field_by_name(schema.dataset_fields, 'notes') or
     h.scheming_field_by_name(schema.dataset_fields, 'notes_translated')) and
     pkg.notes%}
-    <div class="notes embedded-content">
+    <div class="notes embedded-content apiset-description">
       {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
     </div>
   {% endif %}
@@ -21,4 +21,10 @@
 {% block package_additional_info %}
   {% snippet "scheming/package/snippets/additional_info.html",
     pkg_dict=pkg, dataset_type=dataset_type, schema=schema %}
+{% endblock %}
+
+{% block maintainer_info %}{% endblock %}
+
+{% block package_resources %}
+    {% snippet "package/snippets/resources_list3.html", pkg=pkg, resources=pkg.resources %}
 {% endblock %}
