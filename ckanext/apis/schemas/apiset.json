@@ -11,7 +11,8 @@
       "form_languages": ["fi", "en", "sv"],
       "form_placeholder":"eg. A descriptive title",
       "only_default_lang_required": true,
-      "description": "A short and descriptive title for the API collection."
+      "description": "A short and descriptive title for the API collection.",
+      "group_title": "Title of the API collection"
     },
     {
       "field_name": "name",
@@ -20,7 +21,8 @@
       "form_placeholder": "eg. my-apis",
       "form_attrs": {
         "class": "form-control"
-      }
+      },
+      "divider": true
     },
     {
       "field_name": "notes_translated",
@@ -33,61 +35,9 @@
       "label": "Description",
       "display_snippet": null,
       "only_default_lang_required": true,
-      "description": "An universal, compact and easy to understand description of the added API collection."
-    },
-    {
-      "field_name": "api_provider",
-      "label": "API provider",
-      "form_placeholder": "My organization",
-      "form_attrs": {
-        "class": "form-control"
-      },
-      "required": true
-    },
-    {
-      "field_name": "api_provider_email",
-      "label": "API provider email",
-      "form_placeholder": "joe@example.com",
-      "form_attrs": {
-        "class": "form-control"
-      },
-      "display_snippet": "email.html",
-      "validators": "not_empty email_validator",
-      "display_email_name_field": "api_provider",
-      "required": true
-    },
-    {
-      "field_name": "private",
-      "label": "Visibility",
-      "form_snippet": "private.html",
-      "display_snippet": null,
-      "validators": "boolean_validator",
-      "description": "Private APIs will only be seen by the logged in users of the API's organization. Public APIs will be listed publicly through the search."
-    },
-    {
-      "field_name": "owner_org",
-      "label": "Organization",
-      "preset": "dataset_organization_ex",
-      "description": "The organization which owns the API."
-    },
-    {
-      "field_name": "terms_of_service",
-      "label": "Terms of Service",
-      "preset": "fluent_markdown",
-      "only_default_lang_required": true,
-      "form_placeholder": "eg. A detailed description",
-      "form_languages": ["fi", "en", "sv"],
-      "form_attrs": {
-        "class": "form-control"
-      }
-    },
-    {
-      "field_name": "license_id",
-      "label": "License",
-      "form_snippet": "license.html",
-      "display_snippet": "license.html",
-      "validators": "not_empty",
-      "required": true
+      "description": "An universal, compact and easy to understand description of the added API collection.",
+      "divider": true,
+      "group_title": "Description of for the API collection"
     },
     {
       "field_name": "keywords",
@@ -102,7 +52,37 @@
         "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=keywords"
       },
       "description": "Keywords or tags through which users are able to find this dataset easily through the search page or other datasets which have the same tag.",
-      "only_default_lang_required": true
+      "only_default_lang_required": true,
+      "group_title": "Keywords and categories",
+      "divider": true
+    },
+    {
+      "field_name": "private",
+      "label": "Visibility",
+      "form_snippet": "private.html",
+      "display_snippet": null,
+      "validators": "boolean_validator",
+      "description": "Private APIs will only be seen by the logged in users of the API's organization. Public APIs will be listed publicly through the search.",
+      "group_title": "Other information"
+    },
+    {
+      "field_name": "license_id",
+      "label": "License",
+      "form_snippet": "license.html",
+      "display_snippet": "license.html",
+      "validators": "not_empty",
+      "required": true
+    },
+    {
+      "field_name": "terms_of_service",
+      "label": "Terms of Service",
+      "preset": "fluent_markdown",
+      "only_default_lang_required": true,
+      "form_placeholder": "eg. A detailed description",
+      "form_languages": ["fi", "en", "sv"],
+      "form_attrs": {
+        "class": "form-control"
+      }
     },
     {
       "field_name": "access_rights",
@@ -112,7 +92,36 @@
       "form_languages": ["fi", "en", "sv"],
       "form_attrs": {
         "class": "form-control"
-      }
+      },
+      "divider": true
+    },
+    {
+      "field_name": "api_provider",
+      "label": "API provider",
+      "form_placeholder": "My organization",
+      "form_attrs": {
+        "class": "form-control"
+      },
+      "required": true,
+      "group_title": "Provider and maintainer of the API collection"
+    },
+    {
+      "field_name": "api_provider_email",
+      "label": "API provider email",
+      "form_placeholder": "joe@example.com",
+      "form_attrs": {
+        "class": "form-control"
+      },
+      "display_snippet": "email.html",
+      "validators": "not_empty email_validator",
+      "display_email_name_field": "api_provider",
+      "required": true
+    },
+    {
+      "field_name": "owner_org",
+      "label": "Organization",
+      "preset": "dataset_organization_ex",
+      "description": "The organization which owns the API."
     }
   ],
   "resource_fields": [
