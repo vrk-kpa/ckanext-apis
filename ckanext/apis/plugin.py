@@ -1,6 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from logic.action import get, create, update, delete
+from .logic.action import get, create, update, delete
 
 
 class ApisPlugin(plugins.SingletonPlugin):
