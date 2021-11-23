@@ -134,7 +134,8 @@
       "form_attrs": {
         "class": "form-control"
       },
-      "description": "A short and descriptive name for the API."
+      "description": "A short and descriptive name for the API.",
+      "group_title": "Name of the API"
     },
     {
       "field_name": "url",
@@ -144,7 +145,8 @@
         "class": "form-control"
       },
       "description": "A file or url which describes the API endpoint.",
-      "required": true
+      "required": true,
+      "group_title": "API file or link"
     },
     {
       "field_name": "description_translated",
@@ -156,7 +158,8 @@
       "form_attrs": {
         "class": "form-control"
       },
-      "description": "An universal, compact and easy to understand description of the added API."
+      "description": "An universal, compact and easy to understand description of the added API.",
+      "group_title": "API description"
     },
     {
       "field_name": "documentation_translated",
@@ -167,7 +170,9 @@
       "form_languages": ["fi", "en", "sv"],
       "form_attrs": {
         "class": "form-control"
-      }
+      },
+      "group_title": "API user guide",
+      "description": "API documentation"
     },
     {
       "field_name": "registration_required",
@@ -184,7 +189,8 @@
         }
       ],
       "required": true,
-      "validators": "boolean_validator"
+      "validators": "boolean_validator",
+      "group_title": "Other information"
     },
     {
       "field_name": "update_frequency",
