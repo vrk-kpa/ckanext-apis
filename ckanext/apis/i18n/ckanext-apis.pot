@@ -1,21 +1,158 @@
 # Translations template for ckanext-apis.
-# Copyright (C) 2021 ORGANIZATION
+# Copyright (C) 2022 ORGANIZATION
 # This file is distributed under the same license as the ckanext-apis project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apis 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-22 14:45+0000\n"
+"POT-Creation-Date: 2022-05-18 09:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ckanext/apis/translations.py:8
+msgid "Title"
+msgstr ""
+
+#: ckanext/apis/translations.py:9
+msgid "URL"
+msgstr ""
+
+#: ckanext/apis/translations.py:10
+msgid "Description"
+msgstr ""
+
+#: ckanext/apis/translations.py:11
+msgid "Tags"
+msgstr ""
+
+#: ckanext/apis/translations.py:12
+msgid "Visibility"
+msgstr ""
+
+#: ckanext/apis/templates/apiset/resource_read.html:85
+#: ckanext/apis/translations.py:13
+msgid "License"
+msgstr ""
+
+#: ckanext/apis/translations.py:14
+msgid "Terms of Service"
+msgstr ""
+
+#: ckanext/apis/translations.py:15
+msgid "Access Rights"
+msgstr ""
+
+#: ckanext/apis/translations.py:16
+msgid "API provider"
+msgstr ""
+
+#: ckanext/apis/translations.py:17
+msgid "API provider email"
+msgstr ""
+
+#: ckanext/apis/translations.py:18
+msgid "Organization"
+msgstr ""
+
+#: ckanext/apis/translations.py:19
+msgid "Name"
+msgstr ""
+
+#: ckanext/apis/translations.py:20
+msgid "Documentation"
+msgstr ""
+
+#: ckanext/apis/translations.py:21
+msgid "Registration required"
+msgstr ""
+
+#: ckanext/apis/translations.py:22
+msgid "Yes"
+msgstr ""
+
+#: ckanext/apis/translations.py:23
+msgid "No"
+msgstr ""
+
+#: ckanext/apis/translations.py:24
+msgid "Update frequency"
+msgstr ""
+
+#: ckanext/apis/translations.py:25
+msgid "eg. A descriptive title"
+msgstr ""
+
+#: ckanext/apis/translations.py:26
+msgid "eg. my-apis"
+msgstr ""
+
+#: ckanext/apis/translations.py:27
+msgid "eg. A detailed description"
+msgstr ""
+
+#: ckanext/apis/translations.py:28
+msgid "eg. Maps"
+msgstr ""
+
+#: ckanext/apis/translations.py:29
+msgid "My organization"
+msgstr ""
+
+#: ckanext/apis/translations.py:30
+msgid "eg. January 2011 Gold Prices"
+msgstr ""
+
+#: ckanext/apis/translations.py:31
+msgid "eg. A detailed description of using the API"
+msgstr ""
+
+#: ckanext/apis/translations.py:32
+msgid "eg. every second week"
+msgstr ""
+
+#: ckanext/apis/translations.py:33
+msgid "Title of the API collection"
+msgstr ""
+
+#: ckanext/apis/translations.py:34
+msgid "Description of for the API collection"
+msgstr ""
+
+#: ckanext/apis/translations.py:35
+msgid "Keywords and categories"
+msgstr ""
+
+#: ckanext/apis/translations.py:36 ckanext/apis/translations.py:42
+msgid "Other information"
+msgstr ""
+
+#: ckanext/apis/translations.py:37
+msgid "Provider and maintainer of the API collection"
+msgstr ""
+
+#: ckanext/apis/translations.py:38
+msgid "Name of the API"
+msgstr ""
+
+#: ckanext/apis/translations.py:39
+msgid "API file or link"
+msgstr ""
+
+#: ckanext/apis/translations.py:40
+msgid "API description"
+msgstr ""
+
+#: ckanext/apis/translations.py:41
+msgid "API user guide"
+msgstr ""
 
 #: ckanext/apis/templates/apiset/resource_read.html:38
 msgid "From the dataset abstract"
@@ -50,9 +187,5 @@ msgstr ""
 
 #: ckanext/apis/templates/apiset/resource_read.html:79
 msgid "Format"
-msgstr ""
-
-#: ckanext/apis/templates/apiset/resource_read.html:85
-msgid "License"
 msgstr ""
 

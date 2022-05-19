@@ -178,14 +178,16 @@
       "field_name": "registration_required",
       "label": "Registration required",
       "preset": "select",
+      "form_snippet": "radio.html",
+      "display_snippet": "radio.html",
       "choices":[
-        {
-          "value": "false",
-          "label": "No"
-        },
         {
           "value": "true",
           "label": "Yes"
+        },
+        {
+          "value": "false",
+          "label": "No"
         }
       ],
       "required": true,
