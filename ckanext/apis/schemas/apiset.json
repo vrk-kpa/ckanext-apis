@@ -53,7 +53,18 @@
       },
       "description": "Keywords or tags through which users are able to find this dataset easily through the search page or other datasets which have the same tag.",
       "only_default_lang_required": true,
+      "group_title": "Keywords and categories"
+    },
+    {
+      "field_name": "category",
+      "label": "Categories",
+      "preset": "multiple_checkbox",
+      "form_snippet": "ytp_multiple_checkbox_without_link_to_dataset_groups.html",
+      "choices_helper": "scheming_category_list",
+      "description": "Select at least one category.",
+      "validators": "save_to_groups",
       "group_title": "Keywords and categories",
+      "display_snippet": null,
       "divider": true
     },
     {
