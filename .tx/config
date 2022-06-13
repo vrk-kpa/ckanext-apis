@@ -1,10 +1,10 @@
 [main]
 host = https://www.transifex.com
 
-[ytp.ckanext-apis-pot]
-file_filter = ckanext/apis/i18n/<lang>/LC_MESSAGES/ckanext-apis.po
+[o:avoindata:p:ytp:r:ckanext-apis-pot]
+file_filter  = ckanext/apis/i18n/<lang>/LC_MESSAGES/ckanext-apis.po
+source_file  = ckanext/apis/i18n/ckanext-apis.pot
+source_lang  = en
+type         = PO
 minimum_perc = 0
-source_file = ckanext/apis/i18n/ckanext-apis.pot
-source_lang = en
-type = PO
 
