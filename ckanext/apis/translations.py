@@ -10,7 +10,6 @@ def _translations():
     _("Tags")
     _("Visibility")
     _("License")
-    _("Terms of Service")
     _("Access Rights")
     _("API provider")
     _("API provider email")

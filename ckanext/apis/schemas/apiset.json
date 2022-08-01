@@ -85,17 +85,6 @@
       "required": true
     },
     {
-      "field_name": "terms_of_service",
-      "label": "Terms of Service",
-      "preset": "fluent_markdown",
-      "only_default_lang_required": true,
-      "form_placeholder": "eg. A detailed description",
-      "form_languages": ["fi", "en", "sv"],
-      "form_attrs": {
-        "class": "form-control"
-      }
-    },
-    {
       "field_name": "access_rights",
       "label": "Access Rights",
       "preset": "fluent_markdown",
