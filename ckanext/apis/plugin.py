@@ -15,6 +15,7 @@ class ApisPlugin(plugins.SingletonPlugin):
         toolkit.add_resource('fanstatic', 'apis')
 
     def get_actions(self):
+        print("foo")
         return {
                 'apiset_show': get.apiset_show,
                 'apiset_list': get.apiset_list,
