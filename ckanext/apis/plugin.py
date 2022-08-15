@@ -6,6 +6,7 @@ from .logic.action import get, create, update, delete
 class ApisPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IPackageController, inherit=True)
 
     # IConfigurer
 
@@ -23,3 +24,13 @@ class ApisPlugin(plugins.SingletonPlugin):
                 'apiset_patch': update.apiset_patch,
                 'apiset_delete': delete.apiset_delete
                 }
+
+    def before_search(self, search_params):
+        '''Prevents the apisets being shown in dataset search results.'''
+
+        fq = search_params.get('fq', '')
+        if 'dataset_type:apiset' not in fq:
+            fq = u"{0} -dataset_type:apiset".format(fq)
+            search_params['fq'] = fq
+
+        return search_params
