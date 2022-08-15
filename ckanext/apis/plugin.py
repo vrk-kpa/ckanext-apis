@@ -30,7 +30,7 @@ class ApisPlugin(plugins.SingletonPlugin):
 
         fq = search_params.get('fq', '')
         if 'dataset_type:apiset' not in fq:
-            fq = u"{0} -dataset_type:apiset".format(search_params.get('fq', ''))
-            search_params.update({'fq': fq})
+            fq = u"{0} -dataset_type:apiset".format(fq)
+            search_params['fq'] = fq
 
         return search_params
