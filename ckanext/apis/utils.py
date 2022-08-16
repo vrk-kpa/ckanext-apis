@@ -8,7 +8,7 @@ from collections import OrderedDict
 from urllib.parse import urlencode
 from ckan import model
 from ckan.plugins.toolkit import g, config, request, _, asbool
-from ckanext.apis.model import ApisetPackageAssociation
+from .model import ApisetPackageAssociation
 
 
 DATASET_TYPE_NAME = 'apiset'
@@ -24,6 +24,26 @@ flatten_to_string_key = logic.flatten_to_string_key
 _encode_params = dataset._encode_params
 c = toolkit.c
 log = logging.getLogger(__name__)
+
+
+def check_new_view_auth():
+    context = {
+        'model': model,
+        'session': model.Session,
+        'user': toolkit.c.user or toolkit.c.author,
+        'auth_user_obj': toolkit.c.userobj,
+        'save': 'save' in toolkit.request.params
+    }
+
+    # Check access here, then continue with PackageController.new()
+    # PackageController.new will also check access for package_create.
+    # This is okay for now, while only sysadmins can create Showcases, but
+    # may not work if we allow other users to create Showcases, who don't
+    # have access to create dataset package types. Same for edit below.
+    try:
+        toolkit.check_access('package_create', context)
+    except toolkit.NotAuthorized:
+        return toolkit.abort(401, _('Unauthorized to create a package'))
 
 
 def _add_dataset_search(apiset_id, apiset_name):

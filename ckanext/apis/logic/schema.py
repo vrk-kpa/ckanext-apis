@@ -2,8 +2,8 @@
 
 import six
 from ckan.lib.navl.validators import (not_empty)
-from ckanext.apis.logic.validators import (convert_package_name_or_id_to_id_for_type_apiset)
-from ckanext.apis.logic.validators import (convert_package_name_or_id_to_id_for_type_dataset)
+from .validators import (convert_package_name_or_id_to_id_for_type_apiset)
+from .validators import (convert_package_name_or_id_to_id_for_type_dataset)
 
 
 def apiset_package_association_create_schema():

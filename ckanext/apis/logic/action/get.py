@@ -83,7 +83,7 @@ def package_apiset_list(context, data_dict):
 
 @toolkit.side_effect_free
 def apiset_admin_list(context, data_dict):
-    toolkit.check_access('ckanext_showcase_admin_list', context, data_dict)
+    toolkit.check_access('apiset_admin_list', context, data_dict)
     model = context["model"]
     user_ids = ApisetAdmin.get_apiset_admin_ids()
 

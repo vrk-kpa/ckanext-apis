@@ -4,7 +4,7 @@ from flask import Blueprint
 import ckantoolkit as tk
 import ckan.lib.helpers as h
 import ckan.views.dataset as dataset
-import ckanext.apis.utils as utils
+import utils
 
 apis = Blueprint(u'apis_blueprint', __name__)
 
@@ -13,7 +13,6 @@ class CreateView(dataset.CreateView):
     def get(self, data=None, errors=None, error_summary=None):
         utils.check_new_view_auth()
         return super(CreateView, self).get(utils.DATASET_TYPE_NAME, data, errors, error_summary)
-
 
     def post(self):
         data_dict = dataset.clean_dict(dataset.dict_fns.unflatten(dataset.tuplize_dict(dataset.parse_params(
@@ -49,7 +48,6 @@ class EditView(dataset.EditView):
     def get(self, id, data=None, errors=None, error_summary=None):
         utils.check_new_view_auth()
         return super(EditView, self).get(utils.DATASET_TYPE_NAME, id, data, errors, error_summary)
-
 
     def post(self, id):
         context = self._prepare(id)
