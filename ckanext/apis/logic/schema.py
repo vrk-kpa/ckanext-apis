@@ -2,6 +2,7 @@
 
 import six
 from ckan.lib.navl.validators import (not_empty)
+from ckan.logic.validators import user_id_or_name_exists
 from .validators import (convert_package_name_or_id_to_id_for_type_apiset)
 from .validators import (convert_package_name_or_id_to_id_for_type_dataset)
 
@@ -24,3 +25,11 @@ def apiset_package_list_schema():
 
 def package_apiset_list_schema():
     return {'package_id': [not_empty, six.text_type, convert_package_name_or_id_to_id_for_type_dataset]}
+
+
+def apiset_admin_add_schema():
+    return {'username': [not_empty, user_id_or_name_exists, six.text_type]}
+
+
+def apiset_admin_remove_schema():
+    return apiset_admin_add_schema()
