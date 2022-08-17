@@ -22,5 +22,5 @@ def apiset_package_list_schema():
     return {'apiset_id': [not_empty, six.text_type, convert_package_name_or_id_to_id_for_type_apiset]}
 
 
-def packge_apiset_list_schema():
+def package_apiset_list_schema():
     return {'package_id': [not_empty, six.text_type, convert_package_name_or_id_to_id_for_type_dataset]}
