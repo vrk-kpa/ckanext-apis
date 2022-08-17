@@ -6,7 +6,7 @@ import ckan.lib.helpers as h
 import ckan.views.dataset as dataset
 import utils
 
-apis = Blueprint(u'apis_blueprint', __name__)
+apis = Blueprint('apis_blueprint', __name__, url_prefix='/apiset')
 
 
 class CreateView(dataset.CreateView):

@@ -35,11 +35,6 @@ def check_new_view_auth():
         'save': 'save' in toolkit.request.params
     }
 
-    # Check access here, then continue with PackageController.new()
-    # PackageController.new will also check access for package_create.
-    # This is okay for now, while only sysadmins can create Showcases, but
-    # may not work if we allow other users to create Showcases, who don't
-    # have access to create dataset package types. Same for edit below.
     try:
         toolkit.check_access('package_create', context)
     except toolkit.NotAuthorized:
@@ -263,8 +258,7 @@ def manage_datasets_view(id):
     manage_route = 'apis_blueprint.manage_datasets'
 
     if toolkit.request.method == 'POST' and 'bulk_action.dataset_remove' in form_data:
-        # Find the apisets to perform the action on, they are prefixed by
-        # apiset_ in the form data
+        # Find the datasets to perform the action on, they are prefixed by dataset_ in the form data
         package_ids = []
         for param in form_data:
             if param.startswith('dataset_'):
@@ -285,8 +279,7 @@ def manage_datasets_view(id):
             return h.redirect_to(url)
 
     elif toolkit.request.method == 'POST' and 'bulk_action.dataset_add' in form_data:
-        # Find the apisets to perform the action on, they are prefixed by
-        # apiset_ in the form data
+        # Find the datasets to perform the action on, they are prefixed by dataset_ in the form data
         package_ids = []
         for param in form_data:
             if param.startswith('dataset_'):
