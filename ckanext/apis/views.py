@@ -4,7 +4,7 @@ from flask import Blueprint
 import ckantoolkit as tk
 import ckan.lib.helpers as h
 import ckan.views.dataset as dataset
-import utils
+import ckanext.apis.utils as utils
 
 apis = Blueprint('apis_blueprint', __name__)
 
@@ -83,5 +83,5 @@ apis.add_url_rule('/apiset/edit/<id>', view_func=EditView.as_view('edit'), metho
 apis.add_url_rule('/apiset/manage_datasets/<id>', view_func=manage_datasets, methods=[u'GET', u'POST'])
 
 
-def get_blueprints():
+def get_blueprint():
     return [apis]
