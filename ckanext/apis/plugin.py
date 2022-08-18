@@ -1,6 +1,7 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-import ckanext.apis.views as views
+from . import views
+from . import helpers
 from .logic.action import get, create, update, delete
 
 
@@ -8,16 +9,19 @@ class ApisPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IBlueprint)
+    plugins.implements(plugins.ITemplateHelpers)
 
     # IBlueprint
     def get_blueprint(self):
         return views.get_blueprint()
 
+    # IConfigurer
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'apis')
 
+    # IActions
     def get_actions(self):
         return {
                 'apiset_show': get.apiset_show,
@@ -32,3 +36,9 @@ class ApisPlugin(plugins.SingletonPlugin):
                 'apiset_delete': delete.apiset_delete,
                 'apiset_package_association_delete': delete.apiset_package_association_delete,
                 }
+
+    # ITemplateHelpers
+    def get_helpers(self):
+        return {
+            'get_showcase_pkgs': helpers.get_apiset_pkgs
+        }
