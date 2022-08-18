@@ -14,7 +14,9 @@ def _is_apiset_admin(context):
 
 def get_auth_functions():
     return {
+        'apiset_create': apiset_create,
         'apiset_package_association_create': apiset_association_create,
+        'apiset_delete': apiset_delete,
         'apiset_package_association_delete': apiset_association_delete,
         'apiset_admin_remove': remove_apiset_admin,
         'apiset_package_list': apiset_package_list,
@@ -42,9 +44,14 @@ def remove_apiset_admin(context, data_dict):
     return {'success': False}
 
 
+def apiset_create(context, data_dict):
+    return {'success': _is_apiset_admin(context)}
+
 def apiset_association_create(context, data_dict):
     return {'success': _is_apiset_admin(context)}
 
+def apiset_delete(context, data_dict):
+    return {'success': _is_apiset_admin(context)}
 
 def apiset_association_delete(context, data_dict):
     return {'success': _is_apiset_admin(context)}

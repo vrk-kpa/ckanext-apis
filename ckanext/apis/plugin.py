@@ -7,11 +7,11 @@ from .logic.action import get, create, update, delete
 class ApisPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
-    plugins.implements(plugins.IBlueprint)
+    #plugins.implements(plugins.IBlueprint)
 
     # IBlueprint
-    def get_blueprint(self):
-        return views.get_blueprints()
+    #def get_blueprint(self):
+    #    return views.get_blueprints()
 
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')

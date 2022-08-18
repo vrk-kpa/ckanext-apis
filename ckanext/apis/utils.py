@@ -232,6 +232,70 @@ def _add_dataset_search(apiset_id, apiset_name):
         c.search_facets_limits[facet] = limit
 
 
+def read_view(id):
+    context = {
+        'model': model,
+        'session': model.Session,
+        'user': c.user or c.author,
+        'for_view': True,
+        'auth_user_obj': c.userobj
+    }
+    data_dict = {'id': id}
+
+    # check if apiset exists
+    try:
+        c.pkg_dict = toolkit.get_action('package_show')(context, data_dict)
+    except toolkit.ObjectNotFound:
+        return toolkit.abort(404, _('Apiset not found'))
+    except toolkit.NotAuthorized:
+        return toolkit.abort(401, _('Unauthorized to read apiset'))
+
+    # get apiset packages
+    c.showcase_pkgs = toolkit.get_action('apiset_package_list')(
+        context, {
+            'apiset_id': c.pkg_dict['id']
+        })
+
+    package_type = DATASET_TYPE_NAME
+    return toolkit.render('apiset/read.html',
+                     extra_vars={'dataset_type': package_type})
+
+def delete_view(id):
+    if 'cancel' in toolkit.request.params:
+        toolkit.redirect_to(
+            'apis_blueprint.edit' if toolkit.check_ckan_version(min_version='2.9.0')
+            else 'apis_edit', id=id)
+
+    context = {
+        'model': model,
+        'session': model.Session,
+        'user': c.user or c.author,
+        'auth_user_obj': c.userobj
+    }
+
+    try:
+        toolkit.check_access('apiset_delete', context, {'id': id})
+    except toolkit.NotAuthorized:
+        return toolkit.abort(401, _('Unauthorized to delete apiset'))
+
+    if toolkit.check_ckan_version(min_version='2.9.0'):
+        index_route = 'apis_blueprint.index'
+    else:
+        index_route = 'apis_index'
+
+    try:
+        if toolkit.request.method == 'POST':
+            toolkit.get_action('apiset_delete')(context, {'id': id})
+            h.flash_notice(_('Apiset has been deleted.'))
+            return toolkit.redirect_to(index_route)
+        c.pkg_dict = toolkit.get_action('package_show')(context, {'id': id})
+    except toolkit.NotAuthorized:
+        toolkit.abort(401, _('Unauthorized to delete apiset'))
+    except toolkit.ObjectNotFound:
+        toolkit.abort(404, _('Apiset not found'))
+    return toolkit.render('apiset/confirm_delete.html',
+                     extra_vars={'dataset_type': DATASET_TYPE_NAME})
+
 def manage_datasets_view(id):
 
     context = {

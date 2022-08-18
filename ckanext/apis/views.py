@@ -6,8 +6,7 @@ import ckan.lib.helpers as h
 import ckan.views.dataset as dataset
 import utils
 
-apis = Blueprint('apis_blueprint', __name__, url_prefix='/apiset')
-
+apis = Blueprint('apis_blueprint', __name__)
 
 class CreateView(dataset.CreateView):
     def get(self, data=None, errors=None, error_summary=None):
@@ -39,10 +38,14 @@ class CreateView(dataset.CreateView):
 def index():
     return dataset.search(utils.DATASET_TYPE_NAME)
 
-
 def manage_datasets(id):
     return utils.manage_datasets_view(id)
 
+def read(id):
+    return utils.read_view(id)
+
+def delete(id):
+    return utils.delete_view(id)
 
 class EditView(dataset.EditView):
     def get(self, id, data=None, errors=None, error_summary=None):
@@ -73,6 +76,8 @@ class EditView(dataset.EditView):
 
 
 apis.add_url_rule('/apiset', view_func=index)
+apis.add_url_rule('/apiset/delete/<id>', view_func=delete, methods=[u'GET', u'POST'])
+apis.add_url_rule('/apiset/<id>', view_func=read)
 apis.add_url_rule('/apiset/new', view_func=CreateView.as_view('new'))
 apis.add_url_rule('/apiset/edit/<id>', view_func=EditView.as_view('edit'), methods=[u'GET', u'POST'])
 apis.add_url_rule('/apiset/manage_datasets/<id>', view_func=manage_datasets, methods=[u'GET', u'POST'])
