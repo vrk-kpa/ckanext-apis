@@ -73,6 +73,6 @@ coverage installed in your virtualenv (``pip install coverage``) then run::
 Copying and License
 ----------------------------------------
 
-This material is copyright (c) 2019 Digital and Population Data Services Agency, Finland.
+This material is copyright (c) 2022 Digital and Population Data Services Agency, Finland.
 
 ckanext-apis is licensed under the GNU Affero General Public License (AGPL) v3.0
