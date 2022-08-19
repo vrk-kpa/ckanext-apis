@@ -41,8 +41,6 @@ def apiset_package_list(context, data_dict):
 
     pkg_list = []
     if pkg_id_list:
-        # for each package id, get the package dict and append to list if
-        # active
         id_list = []
         for pkg_id in pkg_id_list:
             id_list.append(pkg_id[0])
@@ -65,8 +63,6 @@ def package_apiset_list(context, data_dict):
     apiset_id_list = ApisetPackageAssociation.get_apiset_ids_for_package(validated_data_dict['package_id'])
     package_list = []
 
-    q = ''
-    fq = ''
     if apiset_id_list:
         id_list = []
         for apiset_id in apiset_id_list:

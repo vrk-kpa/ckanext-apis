@@ -8,18 +8,18 @@ from ckan import model
 import logging
 
 log = logging.getLogger(__name__)
-apiset_dataset_assocation_table = None
+apiset_package_association_table = None
 apiset_admin_table = None
 
 
 def setup():
-    if apiset_dataset_assocation_table is None:
+    if apiset_package_association_table is None:
         define_apiset_package_association_table()
         log.debug('ApisetPackageAssociation table defined in memory')
 
     if model.package_table.exists():
-        if not apiset_dataset_assocation_table.exists():
-            apiset_dataset_assocation_table.create()
+        if not apiset_package_association_table.exists():
+            apiset_package_association_table.create()
             log.debug('ApisetPackageAssociation table create')
         else:
             log.debug('ApisetPackageAssociation table already exists')
@@ -73,22 +73,22 @@ class ApisetPackageAssociation(ApisetBaseModel):
 
     @classmethod
     def get_apiset_ids_for_package(cls, package_id):
-        apiset_package_association_list = Session.query(cls.apiset_id).filter_by(package_id=package_id).all()
-        return apiset_package_association_list
+        package_apiset_association_list = Session.query(cls.apiset_id).filter_by(package_id=package_id).all()
+        return package_apiset_association_list
 
 
 def define_apiset_package_association_table():
     global apiset_package_association_table
 
     apiset_package_association_table = Table(
-        'apisetpackage_association', metadata,
+        'apiset_package_association', metadata,
         Column('package_id', types.UnicodeText,
                ForeignKey('package.id',
                           ondelete='CASCADE',
                           onupdate='CASCADE'),
                primary_key=True, nullable=False),
         Column('apiset_id', types.UnicodeText,
-               ForeignKey('apiset.id',
+               ForeignKey('package.id',
                           ondelete='CASCADE',
                           onupdate='CASCADE'),
                primary_key=True, nullable=False)

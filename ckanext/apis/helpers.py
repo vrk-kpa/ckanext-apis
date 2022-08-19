@@ -12,3 +12,6 @@ def get_apiset_pkgs(apiset_id):
     apiset_pkgs = get_action('apiset_package_list')(context, {'apiset_id': apiset_id})
 
     return apiset_pkgs
+
+def get_wysiwyg_editor():
+    return tk.config.get('ckanext.apis.editor', '')
