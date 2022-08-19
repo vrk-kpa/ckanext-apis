@@ -278,8 +278,8 @@ def delete(id):
 apis.add_url_rule('/apiset', view_func=index)
 apis.add_url_rule('/apiset/delete/<id>', view_func=delete, methods=[u'GET', u'POST'])
 apis.add_url_rule('/apiset/<id>', view_func=read)
-# apis.add_url_rule('/apiset/new', view_func=CreateView.as_view('new'))
-# apis.add_url_rule('/apiset/edit/<id>', view_func=EditView.as_view('edit'), methods=[u'GET', u'POST'])
+apis.add_url_rule('/apiset/new', view_func=CreateView.as_view('new'))
+apis.add_url_rule('/apiset/edit/<id>', view_func=EditView.as_view('edit'), methods=[u'GET', u'POST'])
 apis.add_url_rule('/apiset/manage_datasets/<id>', view_func=manage_datasets, methods=[u'GET', u'POST'])
 
 
