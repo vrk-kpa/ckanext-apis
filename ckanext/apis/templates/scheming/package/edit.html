@@ -1,0 +1,5 @@
+{% if dataset_type == 'apiset' %}
+  {% extends "apiset/edit.html" %}
+{% else %}
+  {% ckan_extends %}
+{% endif %}

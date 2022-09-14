@@ -13,39 +13,35 @@
 {% block breadcrumb_content_selected %}{% endblock %}
 
 {% block breadcrumb_content %}
-
-{#
   {% if pkg %}
     {% set apiset = name %}
-    <li>{% link_for _('Apisets'), named_route='apis.search' %}</li>
+    <li>{% link_for _('Apisets'), named_route='apiset.search' %}</li>
     <li>{{ self.breadcrumb_content_selected() }}{% link_for apiset|truncate(30), named_route='apiset_read', id=pkg.name %}</li>
     <li class="active">{% link_for _('Edit'), named_route='apiset.edit', id=pkg.name %}</li>
   {% else %}
-    <li>{% link_for _('Apisets'), named_route='apis.search' %}</li>
+    <li>{% link_for _('Apisets'), named_route='apiset.search' %}</li>
     <li class="active"><a href="">{{ _('Create Apiset') }}</a></li>
   {% endif %}
-#}
-
 {% endblock %}
 
 
 {% block primary %}
-  <div class="primary {% block ckanext_apiset_edit_span %}span9{% endblock %}">
+  <div class="">
     {% block primary_content %}
-      <article>
+      <article class="module">
         {% block page_header %}
-          <header class="suomifi-page-header">
+          <header class="page-header">
             {% if self.content_action() | trim %}
               <div class="content_action">
                 {% block content_action %}
-                  {% link_for _('View apiset'), named_route='apiset.read', id=pkg.name, class_='btn suomifi-button-secondary-noborder', icon='eye-open' %}
+                  {% link_for _('View apiset'), named_route='apiset.read', id=pkg.name, class_='btn', icon='eye-open' %}
                 {% endblock %}
               </div>
             {% endif %}
-            <h1>{{name}}</h1>
-            <ul class="nav">
+            <ul class="nav nav-tabs">
               {% block content_primary_nav %}
-                {{ h.build_nav_icon('apiset.edit', _('Edit apiset'), id=pkg.name, icon=None) }}
+                {{ h.build_nav_icon('apis_blueprint.edit', _('Edit apiset'), id=pkg.name, icon='pencil-square-o') }}
+                {{ h.build_nav_icon('apiset.resources', _('Resources'), id=pkg.name,  icon='bars') }}
                 {{ h.build_nav_icon('apis_blueprint.manage_datasets', _('Manage datasets'), id=pkg.name, icon=None) }}
               {% endblock %}
             </ul>

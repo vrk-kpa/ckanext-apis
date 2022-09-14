@@ -8,6 +8,7 @@ from ckanext.apis.model import ApisetPackageAssociation, ApisetAdmin
 @toolkit.side_effect_free
 def apiset_show(context, data_dict):
     return toolkit.get_action('package_show')(context, data_dict)
+
 @toolkit.side_effect_free
 def apiset_list(context, data_dict):
     model = context["model"]
@@ -23,7 +24,6 @@ def apiset_list(context, data_dict):
         q = q.offset(offset)
 
     return [model_dictize.package_dictize(pkg, context) for pkg in q.all()]
-
 
 @toolkit.side_effect_free
 def apiset_package_list(context, data_dict):

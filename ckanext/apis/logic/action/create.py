@@ -14,10 +14,17 @@ def apiset_package_association_create(context, data_dict):
     toolkit.check_access('apiset_package_association_create', context, data_dict)
     validated_data_dict, errors = validate(data_dict, apiset_package_association_create_schema(), context)
 
+    logging.warning("Got to before errors")
+
     if errors:
+        logging.error("Got to validation error occurred")
+        logging.error(errors)
         raise toolkit.ValidationError(errors)
 
     package_id, apiset_id = toolkit.get_or_bust(validated_data_dict, ['package_id', 'apiset_id'])
+
+    logging.warning("Got to asscoation exists")
+
 
     if ApisetPackageAssociation.exists(package_id=package_id, apiset_id=apiset_id):
         raise toolkit.ValidationError(
@@ -25,5 +32,7 @@ def apiset_package_association_create(context, data_dict):
                                                                                                         apiset_id),
             error_summary=u"The dataset, {0}, is already in the apiset".format(
                 convert_package_name_or_id_to_title_or_name(package_id, context)))
+
+    logging.warning("Got to return")
 
     return ApisetPackageAssociation.create(package_id=package_id, apiset_id=apiset_id)

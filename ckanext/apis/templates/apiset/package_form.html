@@ -1,0 +1,26 @@
+{% extends "scheming/package/snippets/package_form.html" %}
+
+{% block stages %}{% endblock %}
+
+
+{% block form_actions %}
+  <div class="form-actions">
+    {% block delete_button %}
+      {% if form_style == 'edit' and h.check_access('apiset_delete', {'id': data.id}) and not data.state == 'deleted' %}
+      <a class="btn suomifi-button-secondary" href="{% url_for 'apiset.delete', id=data.id %}" data-module="confirm-action" data-module-content="{{ _('Are you sure you want to delete this apiset?') }}">{% block delete_button_text %}<i class="far fa-trash"></i>{{ _('Delete') }}{% endblock %}</a>
+      {% endif %}
+      <a class="btn suomifi-button-secondary-noborder" href="{% url_for 'dataset.search' %}">{{_("Abort")}}</a>
+    {% endblock %}
+    {% block save_button %}
+      <button class="btn suomifi-button-primary" type="submit" name="save" formenctype="multipart/form-data">{% block save_button_text %}{% if form_style != 'edit' %}{{ _('Create Showcase') }}{% else %}{{ _('Update Apiset') }}{% endif %}{% endblock %}</button>
+    {% endblock %}
+  </div>
+  {% block disclaimer %}
+    <p class="disclaimer">
+      {%- trans -%}
+      By submitting this form, you agree to release the <i>metadata</i> values that you
+      enter into the form under the <a href="http://opendatacommons.org/licenses/odbl/1-0/">Open Database License</a>.
+      {%- endtrans -%}
+    </p>
+  {% endblock %}
+{% endblock %}

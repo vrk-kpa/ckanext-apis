@@ -26,6 +26,20 @@ c = toolkit.c
 log = logging.getLogger(__name__)
 
 
+def check_new_view_auth():
+    context = {
+        'model': model,
+        'session': model.Session,
+        'user': toolkit.c.user or toolkit.c.author,
+        'auth_user_obj': toolkit.c.userobj,
+        'save': 'save' in toolkit.request.params
+    }
+
+    try:
+        toolkit.check_access('package_create', context)
+    except toolkit.NotAuthorized:
+        return toolkit.abort(401, _('Unauthorized to create a package'))
+
 def _add_dataset_search(apiset_id, apiset_name):
     from ckan.lib.search import SearchError
 
@@ -125,19 +139,6 @@ def _add_dataset_search(apiset_id, apiset_name):
             'auth_user_obj': c.userobj
         }
 
-
-        # if package_type and package_type != 'dataset':
-        #     # Only show datasets of this particular type
-        #     fq += ' +dataset_type:{type}'.format(type=package_type)
-        # else:
-        #     # Unless changed via config options, don't show non standard
-        #     # dataset types on the default search page
-        #     if not toolkit.asbool(
-        #             toolkit.config.get('ckan.search.show_all_types', 'False')):
-        #         fq += ' +dataset_type:dataset'
-
-        
-        logging.warning(fq)
         # For now only look for datasets
         fq = '+dataset_type:dataset'
 
@@ -189,8 +190,6 @@ def _add_dataset_search(apiset_id, apiset_name):
             'sort': sort_by,
             'extras': search_extras
         }
-        # ###
-        logging.warning(data_dict)
 
         query = toolkit.get_action('package_search')(context, data_dict)
         c.sort_by_selected = query['sort']
@@ -223,13 +222,35 @@ def _add_dataset_search(apiset_id, apiset_name):
                     parameter_name='_%s_limit' % facet))
         c.search_facets_limits[facet] = limit
 
-    # test code
-    for x in c.page.items or []:
-        logging.warning(x)
+def read_view(id):
+    context = {
+        'model': model,
+        'session': model.Session,
+        'user': c.user or c.author,
+        'for_view': True,
+        'auth_user_obj': c.userobj
+    }
+    data_dict = {'id': id}
 
+    # check if apiset exists
+    try:
+        c.pkg_dict = toolkit.get_action('package_show')(context, data_dict)
+    except toolkit.ObjectNotFound:
+        return toolkit.abort(404, _('Apiset not found'))
+    except toolkit.NotAuthorized:
+        return toolkit.abort(401, _('Unauthorized to read apiset'))
+
+    # get apiset packages
+    c.showcase_pkgs = toolkit.get_action('apiset_package_list')(
+        context, {
+            'apiset_id': c.pkg_dict['id']
+        })
+
+    package_type = DATASET_TYPE_NAME
+    return toolkit.render('apiset/read.html',
+                     extra_vars={'dataset_type': package_type})
 
 def manage_datasets_view(id):
-
     context = {
         'model': model,
         'session': model.Session,
@@ -258,7 +279,7 @@ def manage_datasets_view(id):
         package_ids = []
         for param in form_data:
             if param.startswith('dataset_'):
-                package_ids.append(param[7:])
+                package_ids.append(param[8:])
         if package_ids:
             for package_id in package_ids:
                 toolkit.get_action('apiset_package_association_delete')(
@@ -279,7 +300,7 @@ def manage_datasets_view(id):
         package_ids = []
         for param in form_data:
             if param.startswith('dataset_'):
-                package_ids.append(param[7:])
+                package_ids.append(param[8:])
         if package_ids:
             successful_adds = []
             for package_id in package_ids:
