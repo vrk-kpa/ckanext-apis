@@ -259,7 +259,7 @@ def manage_datasets_view(id):
     data_dict = {'id': id}
 
     try:
-        toolkit.check_access('package_update', context)
+        toolkit.check_access('package_update', context, data_dict)
     except toolkit.NotAuthorized:
         return toolkit.abort(401, _('User not authorized to edit {apiset_id}').format(apiset_id=id))
 
@@ -305,8 +305,7 @@ def manage_datasets_view(id):
             successful_adds = []
             for package_id in package_ids:
                 try:
-                    toolkit.get_action(
-                        'apiset_package_association_create')(
+                    toolkit.get_action('apiset_package_association_create')(
                             context, {
                                 'apiset_id': toolkit.c.pkg_dict['id'],
                                 'package_id': package_id

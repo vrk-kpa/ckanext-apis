@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from ast import keyword
 from flask import Blueprint
 import ckan.lib.base as base
 import ckan.views.dataset as dataset
@@ -40,59 +41,49 @@ class EditView(dataset.EditView):
         # TODO Check this
         # utils.check_edit_view_auth(id)
 
-
         data_dict = dataset.clean_dict(dataset.dict_fns.unflatten(dataset.tuplize_dict(dataset.parse_params(
             tk.request.form))))
         data_dict.update(dataset.clean_dict(dataset.dict_fns.unflatten(dataset.tuplize_dict(dataset.parse_params(
             tk.request.files)))))
 
+        languages = ['fi', 'en', 'sv']
 
-        test = tk.request.form
-        logging.error(json.dumps(test))
+        def translated_field(name):
+            data_dict[f'{name}'] = {}
+            for language in languages:
+                translated_val = data_dict.get(f'{name}-{language}')
+                data_dict[f'{name}'][language] = translated_val
+
+        def translated_keyword_field():
+            data_dict['keywords'] = {'fi': [], 'en': [], 'sv': []}
+            for language in languages:
+                keywords = data_dict.get(f'keywords-{language}')
+                # split the keywords if applicable
+                if keywords:
+                    split_keywords = keywords.split(',')
+                    for kw in split_keywords:
+                        data_dict['keywords'][language].append(kw)
+            
+        # convert fields with translations to correct data structure
+        translated_field('title_translated')
+        translated_field('notes_translated')
+        translated_field('access_rights')
+        translated_keyword_field()
 
         # Get resource fields and append them to the data_dict
         old_data = get_action(u'package_show')(context, {u'id': id})
-
-        '''
-        The cleaned data comes in the form of:
-        "title_translated-en": "testi enkku",
-	    "title_translated-fi": "Mun kokoelma testi",
-	    "title_translated-sv": "",
-        
-        while what needs to be saved is
-        "title_translated": {
-            "en": "",
-            "fi": "Mun kokoelma testi",
-            "sv": ""
-        },
-        '''
-
+        logging.error(json.dumps(old_data))
 
         data = old_data
         data_dict['id'] = id
         data['title_translated']['en'] = "enkku testi"
-
-        # logging.error("___old___")
-        # logging.error(json.dumps(data))
-        # logging.error("__new____")
-        # logging.error(json.dumps(data_dict))
-        # logging.error("______")
-        
-
         data.update(data_dict)
-
-        # logging.error("____update___")
-        # logging.error(json.dumps(data))
-        # logging.error("____________")
-
         
         try:
             pkg = tk.get_action('package_update')(context, data)
-            #pkg = tk.get_action('package_patch')(context, data_dict)
         except tk.ValidationError as e:
             errors = e.error_dict
             error_summary = e.error_summary
-            #return self.get(id, data_dict, errors, error_summary)
             return self.get(id, data, errors, error_summary)
 
         tk.c.pkg_dict = pkg
@@ -227,12 +218,18 @@ def read(id):
     # use the default read function
     return dataset.read('apiset', id)
 
+def new():
+    myview = dataset.CreateView()
+    return myview.get('apiset')
+
+
 def manage_datasets(id):
     return utils.manage_datasets_view(id)
 
 apis.add_url_rule('/apiset/manage_datasets/<id>', view_func=manage_datasets, methods=[u'GET', u'POST'])
 apis.add_url_rule('/apiset/edit/<id>', view_func=EditView.as_view('edit'), methods=[u'GET', u'POST'])
 apis.add_url_rule('/apiset/resources/<id>', view_func=resources)
+apis.add_url_rule('/apiset/new', view_func=new)
 apis.add_url_rule('/apiset/<id>', view_func=read)
 
 

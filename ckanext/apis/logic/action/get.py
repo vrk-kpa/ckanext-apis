@@ -3,7 +3,7 @@ import ckan.lib.dictization.model_dictize as model_dictize
 
 from ckan.lib.navl.dictization_functions import validate
 from ckanext.apis.logic.schema import apiset_package_list_schema, package_apiset_list_schema
-from ckanext.apis.model import ApisetPackageAssociation, ApisetAdmin
+from ckanext.apis.model import ApisetPackageAssociation#, ApisetAdmin
 
 @toolkit.side_effect_free
 def apiset_show(context, data_dict):
@@ -73,21 +73,21 @@ def package_apiset_list(context, data_dict):
     return package_list
 
 
-@toolkit.side_effect_free
-def apiset_admin_list(context, data_dict):
-    toolkit.check_access('apiset_admin_list', context, data_dict)
-    model = context["model"]
-    user_ids = ApisetAdmin.get_apiset_admin_ids()
+# @toolkit.side_effect_free
+# def apiset_admin_list(context, data_dict):
+#     toolkit.check_access('apiset_admin_list', context, data_dict)
+#     model = context["model"]
+#     user_ids = ApisetAdmin.get_apiset_admin_ids()
 
-    if user_ids:
-        q = model.Session.query(model.User) \
-            .filter(model.User.state == 'active') \
-            .filter(model.User.id.in_(user_ids))
+#     if user_ids:
+#         q = model.Session.query(model.User) \
+#             .filter(model.User.state == 'active') \
+#             .filter(model.User.id.in_(user_ids))
 
-        showcase_admin_list = []
-        for user in q.all():
-            showcase_admin_list.append({'name': user.name, 'id': user.id})
-        return showcase_admin_list
+#         showcase_admin_list = []
+#         for user in q.all():
+#             showcase_admin_list.append({'name': user.name, 'id': user.id})
+#         return showcase_admin_list
 
-    return []
+#     return []
 

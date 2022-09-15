@@ -27,17 +27,17 @@ def setup():
         log.debug('ApisetPackageAssociation table creation deferred')
 
     if apiset_admin_table is None:
-        define_apiset_admin_table()
+        #define_apiset_admin_table()
         log.debug('ApisetAdmin table defined in memory')
 
-    if model.user_table.exists():
-        if not apiset_admin_table.exists():
-            apiset_admin_table.create()
-            log.debug('ApisetAdmin table create')
-        else:
-            log.debug('ApisetAdmin table already exists')
-    else:
-        log.debug('ApisetAdmin table creation deferred')
+    # if model.user_table.exists():
+    #     if not apiset_admin_table.exists():
+    #         apiset_admin_table.create()
+    #         log.debug('ApisetAdmin table create')
+    #     else:
+    #         log.debug('ApisetAdmin table already exists')
+    # else:
+    #     log.debug('ApisetAdmin table creation deferred')
 
 
 class ApisetBaseModel(DomainObject):
@@ -97,26 +97,33 @@ def define_apiset_package_association_table():
     mapper(ApisetPackageAssociation, apiset_package_association_table)
 
 
-class ApisetAdmin(ApisetBaseModel):
+# Delete
+# class ApisetAdmin(ApisetBaseModel):
+#     pass
 
-    @classmethod
-    def get_apiset_admin_ids(cls):
-        id_list = [i for (i, ) in Session.query(cls.user_id).all()]
-        return id_list
+#     @classmethod
+#     def get_apiset_admin_ids(cls):
+#         id_list = [i for (i, ) in Session.query(cls.user_id).all()]
+#         return id_list
 
-    @classmethod
-    def is_user_apiset_admin(cls, user):
-        return (user.id in cls.get_apiset_admin_ids())
+#     @classmethod
+#     def is_user_apiset_admin(cls, user):
+
+#         logging.error(user)
+#         test = cls.get_apiset_admin_ids()
+#         logging.error(test)
+
+#         return (user.id in cls.get_apiset_admin_ids())
 
 
-def define_apiset_admin_table():
-    global apiset_admin_table
+# def define_apiset_admin_table():
+#     global apiset_admin_table
 
-    apiset_admin_table = Table('apiset_admin', metadata,
-                                 Column('user_id', types.UnicodeText,
-                                        ForeignKey('user.id',
-                                                   ondelete='CASCADE',
-                                                   onupdate='CASCADE'),
-                                        primary_key=True, nullable=False))
+#     apiset_admin_table = Table('apiset_admin', metadata,
+#                                  Column('user_id', types.UnicodeText,
+#                                         ForeignKey('user.id',
+#                                                    ondelete='CASCADE',
+#                                                    onupdate='CASCADE'),
+#                                         primary_key=True, nullable=False))
 
-    mapper(ApisetAdmin, apiset_admin_table)
+    # mapper(ApisetAdmin, apiset_admin_table)
