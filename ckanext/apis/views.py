@@ -15,6 +15,7 @@ from . import utils
 # additions
 from typing import Any, Iterable, Optional, Union, cast
 import ckan.model as model
+import ckan.logic.validators as validators
 import json
 
 
@@ -38,8 +39,7 @@ class EditView(dataset.EditView):
 
     def post(self, id):
         context = self._prepare(id)
-        # TODO Check this
-        # utils.check_edit_view_auth(id)
+        utils.check_edit_view_auth(id)
 
         data_dict = dataset.clean_dict(dataset.dict_fns.unflatten(dataset.tuplize_dict(dataset.parse_params(
             tk.request.form))))
@@ -72,7 +72,6 @@ class EditView(dataset.EditView):
 
         # Get resource fields and append them to the data_dict
         old_data = get_action(u'package_show')(context, {u'id': id})
-        logging.error(json.dumps(old_data))
 
         data = old_data
         data_dict['id'] = id
@@ -112,17 +111,6 @@ class EditView(dataset.EditView):
             data = old_data
         except (NotFound, NotAuthorized):
             return base.abort(404, _(u'Apiset not found'))
-        # are we doing a multiphase add?
-        if data.get(u'state', u'').startswith(u'draft'):
-            g.form_action = h.url_for(u'{}.new'.format(package_type))
-            g.form_style = u'new'
-
-            return CreateView().get(
-                package_type,
-                data=data,
-                errors=errors,
-                error_summary=error_summary
-            )
 
         pkg = context.get(u"package")
         resources_json = h.json.dumps(data.get(u'resources', []))

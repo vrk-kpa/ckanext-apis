@@ -25,6 +25,25 @@ _encode_params = dataset._encode_params
 c = toolkit.c
 log = logging.getLogger(__name__)
 
+def check_edit_view_auth(id):
+    context = {
+        'model': model,
+        'session': model.Session,
+        'user': c.user or c.author,
+        'auth_user_obj': c.userobj,
+        'save': 'save' in toolkit.request.params,
+        'moderated': toolkit.config.get('moderated'),
+        'pending': True
+    }
+    data_dict = {'id': id}
+
+    try:
+        #toolkit.check_access('apiset_update', context)
+        toolkit.check_access('package_update', context, data_dict)
+    except toolkit.NotAuthorized:
+        return toolkit.abort(
+            401,
+            _(f'User not authorized to edit {id}'))
 
 def check_new_view_auth():
     context = {

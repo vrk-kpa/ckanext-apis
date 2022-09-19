@@ -18,6 +18,7 @@ def get_auth_functions():
         'apiset_package_association_create': apiset_association_create,
         'apiset_delete': apiset_delete,
         'apiset_package_association_delete': apiset_association_delete,
+        'apiset_update': apiset_update,
         'apiset_admin_remove': remove_apiset_admin,
         'apiset_package_list': apiset_package_list,
         'package_apiset_list': package_apiset_list,
@@ -39,6 +40,15 @@ def apiset_admin_list(context, data_dict):
 
 def remove_apiset_admin(context, data_dict):
     return {'success': False}
+
+def apiset_update(context, data_dict):
+    user = context.get('user')
+    try:
+        toolkit.check_access('package_update', context, data_dict)
+        return {'success': True}
+    except toolkit.NotAuthorized:
+        return {'success': False,
+                'msg': toolkit._('User {0} not authorized to edit apisets').format(user)}
 
 def apiset_create(context, data_dict):
     user = context.get('user')
