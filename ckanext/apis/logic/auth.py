@@ -1,15 +1,8 @@
 import logging
 import ckan.model as model
 from ckan.plugins import toolkit
-# from ckanext.apis.model import ApisetAdmin
 
 log = logging.getLogger(__name__)
-
-
-def _is_apiset_admin(context):
-    user = context.get('user', '')
-    userobj = model.User.get(user)
-    # return ApisetAdmin.is_user_apiset_admin(userobj)
 
 
 def get_auth_functions():
@@ -24,7 +17,6 @@ def get_auth_functions():
         'package_apiset_list': package_apiset_list,
         'apiset_admin_list': apiset_admin_list,
     }
-
 
 
 @toolkit.auth_allow_anonymous_access

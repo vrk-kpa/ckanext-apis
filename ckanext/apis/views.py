@@ -75,7 +75,6 @@ class EditView(dataset.EditView):
 
         data = old_data
         data_dict['id'] = id
-        data['title_translated']['en'] = "enkku testi"
         data.update(data_dict)
         
         try:

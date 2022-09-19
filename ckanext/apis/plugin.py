@@ -8,6 +8,8 @@ from . import views
 from ckanext.apis.model import setup as model_setup
 from . import helpers
 from ckanext.apis.logic import auth
+import os
+import sys
 import json
 import logging
 
@@ -34,7 +36,6 @@ class ApisPlugin(plugins.SingletonPlugin):
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'apis')
         
-
     def get_actions(self):
         return {
                 'apiset_show': get.apiset_show,
@@ -77,3 +78,38 @@ class ApisPlugin(plugins.SingletonPlugin):
         return {
             'get_apiset_pkgs': helpers.get_apiset_pkgs
         }
+
+    # ITranslation
+
+    # The following methods copied from ckan.lib.plugins.DefaultTranslation so
+    # we don't have to mix it into the class. This means we can use Apiset
+    # even if ITranslation isn't available (less than 2.5).
+    
+    def i18n_directory(self):
+            '''Change the directory of the *.mo translation files
+            The default implementation assumes the plugin is
+            ckanext/myplugin/plugin.py and the translations are stored in
+            i18n/
+            '''
+            # assume plugin is called ckanext.<myplugin>.<...>.PluginClass
+            extension_module_name = '.'.join(self.__module__.split('.')[0:2])
+            module = sys.modules[extension_module_name]
+            return os.path.join(os.path.dirname(module.__file__), 'i18n')
+
+    def i18n_locales(self):
+        '''Change the list of locales that this plugin handles
+        By default the will assume any directory in subdirectory in the
+        directory defined by self.directory() is a locale handled by this
+        plugin
+        '''
+        directory = self.i18n_directory()
+        return [d for
+                d in os.listdir(directory)
+                if os.path.isdir(os.path.join(directory, d))]
+
+    def i18n_domain(self):
+        '''Change the gettext domain handled by this plugin
+        This implementation assumes the gettext domain is
+        ckanext-{extension name}, hence your pot, po and mo files should be
+        named ckanext-{extension name}.mo'''
+        return 'ckanext-{name}'.format(name=self.name)

@@ -38,7 +38,6 @@ def check_edit_view_auth(id):
     data_dict = {'id': id}
 
     try:
-        #toolkit.check_access('apiset_update', context)
         toolkit.check_access('package_update', context, data_dict)
     except toolkit.NotAuthorized:
         return toolkit.abort(
@@ -344,7 +343,6 @@ def manage_datasets_view(id):
 
     _add_dataset_search(toolkit.c.pkg_dict['id'], toolkit.c.pkg_dict['name'])
 
-   # toolkit.c.apiset_pkgs = toolkit.get_action('apiset_list')(
     toolkit.c.apiset_pkgs = toolkit.get_action('apiset_package_list')(
         context, {
             'apiset_id': toolkit.c.pkg_dict['id']
