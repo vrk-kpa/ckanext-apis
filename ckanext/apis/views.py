@@ -15,10 +15,9 @@ from . import utils
 # additions
 from typing import Any, Iterable, Optional, Union, cast
 import ckan.model as model
-import ckan.logic.validators as validators
+from ckanext.apis.logic.converters import save_to_groups
+
 import json
-
-
 import logging
 
 _setup_template_variables = dataset._setup_template_variables
@@ -75,8 +74,15 @@ class EditView(dataset.EditView):
 
         data = old_data
         data_dict['id'] = id
+
+        # empty the groups from the old data, validation will fill them from new data
+        data['groups'] = []
+        # The form omits the category field if no categories are selected
+        if not 'category' in data_dict:
+            data_dict['category'] = ""
+
         data.update(data_dict)
-        
+
         try:
             pkg = tk.get_action('package_update')(context, data)
         except tk.ValidationError as e:
@@ -218,7 +224,6 @@ apis.add_url_rule('/apiset/edit/<id>', view_func=EditView.as_view('edit'), metho
 apis.add_url_rule('/apiset/resources/<id>', view_func=resources)
 apis.add_url_rule('/apiset/new', view_func=new)
 apis.add_url_rule('/apiset/<id>', view_func=read)
-
 
 def get_blueprint():
     return [apis]

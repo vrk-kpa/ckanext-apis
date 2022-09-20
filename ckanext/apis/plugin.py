@@ -12,6 +12,7 @@ import os
 import sys
 import json
 import logging
+from ckanext.apis.logic.converters import save_to_groups
 
 
 class ApisPlugin(plugins.SingletonPlugin):
@@ -22,6 +23,8 @@ class ApisPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.IValidators)
+
 
     # IBlueprint
     def get_blueprint(self):
@@ -49,6 +52,13 @@ class ApisPlugin(plugins.SingletonPlugin):
                 'apiset_package_association_create': create.apiset_package_association_create,
                 'apiset_package_association_delete': delete.apiset_package_association_delete,
                 }
+
+    # IValidators
+    def get_validators(self):
+        return {
+            # NOTE: this is a converter. (https://github.com/vrk-kpa/ckanext-scheming/#validators)
+            'save_to_groups': save_to_groups,
+        }   
 
     def before_search(self, search_params):
         '''Prevents the apisets being shown in dataset search results.'''
@@ -84,7 +94,7 @@ class ApisPlugin(plugins.SingletonPlugin):
     # The following methods copied from ckan.lib.plugins.DefaultTranslation so
     # we don't have to mix it into the class. This means we can use Apiset
     # even if ITranslation isn't available (less than 2.5).
-    
+
     def i18n_directory(self):
             '''Change the directory of the *.mo translation files
             The default implementation assumes the plugin is
