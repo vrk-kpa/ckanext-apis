@@ -1,6 +1,6 @@
 {% extends 'page.html' %}
 
-{% if pkg is not defined %}{% set pkg = c.pkg_dict if c.pkg_dict is defined else {} %}{% endif %}
+{% if pkg is not defined %}{% set pkg = g.pkg_dict if g.pkg_dict is defined else {} %}{% endif %}
 {% set name = h.get_translated(pkg, 'title') or pkg.name %}
 
 

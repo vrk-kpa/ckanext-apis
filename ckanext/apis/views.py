@@ -10,13 +10,9 @@ import ckan.lib.helpers as h
 from ckan.common import _, g, request
 from ckan.views.home import CACHE_PARAMETERS
 import ckan.lib.navl.dictization_functions as dict_fns
-# from ckanext.showcase import views, utils as showcase_utils
 from . import utils
-# additions
 from typing import Any, Iterable, Optional, Union, cast
 import ckan.model as model
-from ckanext.apis.logic.converters import save_to_groups
-
 import json
 import logging
 
@@ -90,7 +86,7 @@ class EditView(dataset.EditView):
             error_summary = e.error_summary
             return self.get(id, data, errors, error_summary)
 
-        tk.c.pkg_dict = pkg
+        tk.g.pkg_dict = pkg
 
         url = h.url_for('apis_blueprint.read', id=pkg['name'])
         return h.redirect_to(url)

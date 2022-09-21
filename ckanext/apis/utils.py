@@ -22,15 +22,15 @@ clean_dict = logic.clean_dict
 parse_params = logic.parse_params
 flatten_to_string_key = logic.flatten_to_string_key
 _encode_params = dataset._encode_params
-c = toolkit.c
+g = toolkit.g
 log = logging.getLogger(__name__)
 
 def check_edit_view_auth(id):
     context = {
         'model': model,
         'session': model.Session,
-        'user': c.user or c.author,
-        'auth_user_obj': c.userobj,
+        'user': g.user or g.author,
+        'auth_user_obj': g.userobj,
         'save': 'save' in toolkit.request.params,
         'moderated': toolkit.config.get('moderated'),
         'pending': True
@@ -48,8 +48,8 @@ def check_new_view_auth():
     context = {
         'model': model,
         'session': model.Session,
-        'user': toolkit.c.user or toolkit.c.author,
-        'auth_user_obj': toolkit.c.userobj,
+        'user': toolkit.g.user or toolkit.g.author,
+        'auth_user_obj': toolkit.g.userobj,
         'save': 'save' in toolkit.request.params
     }
 
@@ -60,11 +60,12 @@ def check_new_view_auth():
 
 def _add_dataset_search(apiset_id, apiset_name):
     from ckan.lib.search import SearchError
+    g = toolkit.g
 
     package_type = DATASET_TYPE_NAME
     # unicode format (decoded from utf8)
-    q = c.q = toolkit.request.params.get('q', u'')
-    c.query_error = False
+    q = g.q = toolkit.request.params.get('q', u'')
+    g.query_error = False
     page = h.get_page_number(toolkit.request.params)
 
     limit = int(toolkit.config.get('ckan.datasets_per_page', 20))
@@ -80,7 +81,7 @@ def _add_dataset_search(apiset_id, apiset_name):
                                action='search',
                                new_params=by)
 
-    c.drill_down_url = drill_down_url
+    g.drill_down_url = drill_down_url
 
     def remove_field(key, value=None, replace=None):
         return h.remove_url_param(key,
@@ -89,7 +90,7 @@ def _add_dataset_search(apiset_id, apiset_name):
                                   controller=package_type,
                                   action='search')
 
-    c.remove_field = remove_field
+    g.remove_field = remove_field
 
     sort_by = toolkit.request.params.get('sort', None)
     params_nosort = [(k, v) for k, v in params_nopage if k != 'sort']
@@ -116,45 +117,45 @@ def _add_dataset_search(apiset_id, apiset_name):
             params.append(('sort', sort_string))
         return _search_url(params, apiset_name)
 
-    c.sort_by = _sort_by
+    g.sort_by = _sort_by
     if sort_by is None:
-        c.sort_by_fields = []
+        g.sort_by_fields = []
     else:
-        c.sort_by_fields = [field.split()[0] for field in sort_by.split(',')]
+        g.sort_by_fields = [field.split()[0] for field in sort_by.split(',')]
 
     def pager_url(q=None, page=None):
         params = list(params_nopage)
         params.append(('page', page))
         return _search_url(params, apiset_name)
 
-    c.search_url_params = urlencode(_encode_params(params_nopage))
+    g.search_url_params = urlencode(_encode_params(params_nopage))
 
     try:
-        c.fields = []
-        # c.fields_grouped will contain a dict of params containing
+        g.fields = []
+        # g.fields_grouped will contain a dict of params containing
         # a list of values eg {'tags':['tag1', 'tag2']}
-        c.fields_grouped = {}
+        g.fields_grouped = {}
         search_extras = {}
         fq = ''
         for (param, value) in toolkit.request.params.items():
             if param not in ['q', 'page', 'sort'] \
                     and len(value) and not param.startswith('_'):
                 if not param.startswith('ext_'):
-                    c.fields.append((param, value))
+                    g.fields.append((param, value))
                     fq += ' %s:"%s"' % (param, value)
-                    if param not in c.fields_grouped:
-                        c.fields_grouped[param] = [value]
+                    if param not in g.fields_grouped:
+                        g.fields_grouped[param] = [value]
                     else:
-                        c.fields_grouped[param].append(value)
+                        g.fields_grouped[param].append(value)
                 else:
                     search_extras[param] = value
 
         context = {
             'model': model,
             'session': model.Session,
-            'user': c.user or c.author,
+            'user': g.user or g.author,
             'for_view': True,
-            'auth_user_obj': c.userobj
+            'auth_user_obj': g.userobj
         }
 
         # For now only look for datasets
@@ -197,7 +198,7 @@ def _add_dataset_search(apiset_id, apiset_name):
         for plugin in plugins.PluginImplementations(plugins.IFacets):
             facets = plugin.dataset_facets(facets, package_type)
 
-        c.facet_titles = facets
+        g.facet_titles = facets
 
         data_dict = {
             'q': q,
@@ -210,24 +211,24 @@ def _add_dataset_search(apiset_id, apiset_name):
         }
 
         query = toolkit.get_action('package_search')(context, data_dict)
-        c.sort_by_selected = query['sort']
+        g.sort_by_selected = query['sort']
 
-        c.page = h.Page(collection=query['results'],
+        g.page = h.Page(collection=query['results'],
                         page=page,
                         url=pager_url,
                         item_count=query['count'],
                         items_per_page=limit)
-        c.facets = query['facets']
-        c.search_facets = query['search_facets']
-        c.page.items = query['results']
+        g.facets = query['facets']
+        g.search_facets = query['search_facets']
+        g.page.items = query['results']
     except SearchError as se:
         log.error('Dataset search error: %r', se.args)
-        c.query_error = True
-        c.facets = {}
-        c.search_facets = {}
-        c.page = h.Page(collection=[])
-    c.search_facets_limits = {}
-    for facet in c.search_facets.keys():
+        g.query_error = True
+        g.facets = {}
+        g.search_facets = {}
+        g.page = h.Page(collection=[])
+    g.search_facets_limits = {}
+    for facet in g.search_facets.keys():
         try:
             limit = int(
                 toolkit.request.params.get(
@@ -238,30 +239,30 @@ def _add_dataset_search(apiset_id, apiset_name):
                 400,
                 _("Parameter '{parameter_name}' is not an integer").format(
                     parameter_name='_%s_limit' % facet))
-        c.search_facets_limits[facet] = limit
+        g.search_facets_limits[facet] = limit
 
 def read_view(id):
     context = {
         'model': model,
         'session': model.Session,
-        'user': c.user or c.author,
+        'user': g.user or g.author,
         'for_view': True,
-        'auth_user_obj': c.userobj
+        'auth_user_obj': g.userobj
     }
     data_dict = {'id': id}
 
     # check if apiset exists
     try:
-        c.pkg_dict = toolkit.get_action('package_show')(context, data_dict)
+        g.pkg_dict = toolkit.get_action('package_show')(context, data_dict)
     except toolkit.ObjectNotFound:
         return toolkit.abort(404, _('Apiset not found'))
     except toolkit.NotAuthorized:
         return toolkit.abort(401, _('Unauthorized to read apiset'))
 
     # get apiset packages
-    c.showcase_pkgs = toolkit.get_action('apiset_package_list')(
+    g.showcase_pkgs = toolkit.get_action('apiset_package_list')(
         context, {
-            'apiset_id': c.pkg_dict['id']
+            'apiset_id': g.pkg_dict['id']
         })
 
     package_type = DATASET_TYPE_NAME
@@ -272,7 +273,7 @@ def manage_datasets_view(id):
     context = {
         'model': model,
         'session': model.Session,
-        'user': toolkit.c.user or toolkit.c.author
+        'user': toolkit.g.user or toolkit.g.author
     }
     data_dict = {'id': id}
 
@@ -282,7 +283,7 @@ def manage_datasets_view(id):
         return toolkit.abort(401, _('User not authorized to edit {apiset_id}').format(apiset_id=id))
 
     try:
-        toolkit.c.pkg_dict = toolkit.get_action('package_show')(context, data_dict)
+        toolkit.g.pkg_dict = toolkit.get_action('package_show')(context, data_dict)
     except toolkit.ObjectNotFound:
         return toolkit.abort(404, _('Apiset not found'))
     except toolkit.NotAuthorized:
@@ -302,7 +303,7 @@ def manage_datasets_view(id):
             for package_id in package_ids:
                 toolkit.get_action('apiset_package_association_delete')(
                     context, {
-                        'apiset_id': toolkit.c.pkg_dict['id'],
+                        'apiset_id': toolkit.g.pkg_dict['id'],
                         'package_id': package_id
                     })
             h.flash_success(
@@ -325,7 +326,7 @@ def manage_datasets_view(id):
                 try:
                     toolkit.get_action('apiset_package_association_create')(
                             context, {
-                                'apiset_id': toolkit.c.pkg_dict['id'],
+                                'apiset_id': toolkit.g.pkg_dict['id'],
                                 'package_id': package_id
                             })
                 except toolkit.ValidationError as e:
@@ -341,11 +342,11 @@ def manage_datasets_view(id):
             url = h.url_for(manage_route, id=id)
             return h.redirect_to(url)
 
-    _add_dataset_search(toolkit.c.pkg_dict['id'], toolkit.c.pkg_dict['name'])
+    _add_dataset_search(toolkit.g.pkg_dict['id'], toolkit.g.pkg_dict['name'])
 
-    toolkit.c.apiset_pkgs = toolkit.get_action('apiset_package_list')(
+    toolkit.g.apiset_pkgs = toolkit.get_action('apiset_package_list')(
         context, {
-            'apiset_id': toolkit.c.pkg_dict['id']
+            'apiset_id': toolkit.g.pkg_dict['id']
         })
 
     return toolkit.render('apiset/manage_datasets.html', extra_vars={'view_type': 'manage_datasets'})

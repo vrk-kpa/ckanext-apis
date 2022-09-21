@@ -54,7 +54,7 @@ def apiset_create(context, data_dict):
 def apiset_association_create(context, data_dict):
     user = context.get('user')
     try:
-        toolkit.check_access('package_create', context, data_dict)
+        toolkit.check_access('package_update', context, data_dict)
         return {'success': True}
     except toolkit.NotAuthorized:
         return {'success': False,

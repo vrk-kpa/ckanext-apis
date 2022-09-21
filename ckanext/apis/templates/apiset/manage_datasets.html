@@ -19,12 +19,12 @@
           {{ _('Datasets in this apiset') }}
         {% endblock %}
       </h3>
-      {% if c.apiset_pkgs %}
+      {% if g.apiset_pkgs %}
         <form method="POST" data-module="basic-form">
           <table class="table table-bordered table-bulk-edit" data-module="table-selectable-rows">
             <tbody>
-                {% for package in c.apiset_pkgs %}
-              {#  {% for package in c.page.items %} #}
+                {% for package in g.apiset_pkgs %}
+              {#  {% for package in g.page.items %} #}
                 {% set truncate = truncate or 180 %}
                 {% set truncate_title = truncate_title or 80 %}
                 {% set title = package.title or package.name %}
@@ -65,11 +65,11 @@
   </h3>
   <section>
   {% set facets = {
-    'fields': c.fields_grouped,
-    'search': c.search_facets,
-    'titles': c.facet_titles,
-    'translated_fields': c.translated_fields,
-    'remove_field': c.remove_field }
+    'fields': g.fields_grouped,
+    'search': g.search_facets,
+    'titles': g.facet_titles,
+    'translated_fields': g.translated_fields,
+    'remove_field': g.remove_field }
   %}
   {% set sorting = [
     (_('Relevance'), 'score desc, metadata_created desc'),
@@ -80,10 +80,10 @@
   %}
   
   <div>
-    {% snippet 'snippets/search_form.html', type='apiset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %}
+    {% snippet 'snippets/search_form.html', type='apiset', query=g.q, sorting=sorting, sorting_selected=g.sort_by_selected, count=g.page.item_count, facets=facets, show_empty=request.params, error=g.query_error, fields=g.fields %}
     
     {% block package_search_results_list %}
-      {% if c.page.items %}
+      {% if g.page.items %}
         <form method="POST" data-module="basic-form">
           <div class="action-button-group">
             <button name="bulk_action.dataset_add" value="add" class="btn suomifi-button-secondary" type="submit">
@@ -93,7 +93,7 @@
           {#{% block errors %}{{ form.errors(error_summary) }}{% endblock %}#}
           <table class="table table-bordered table-bulk-edit" data-module="table-selectable-rows">
             <tbody>
-              {% for package in c.page.items %}
+              {% for package in g.page.items %}
                 {% set truncate = truncate or 180 %}
                 {% set truncate_title = truncate_title or 80 %}
                 {% set title = package.title or package.name %}
@@ -109,10 +109,10 @@
                 </tr>
               {% endfor %}
             </tbody>
-            {% if c.page.pager() %}
+            {% if g.page.pager() %}
               <tfoot>
                 <tr>
-                  <td colspan="2" class="ckanext_apis_pagination_footer">{{ c.page.pager(q=c.q) }}</td>
+                  <td colspan="2" class="ckanext_apis_pagination_footer">{{ g.page.pager(q=g.q) }}</td>
                 </tr>
               </tfoot>
             {% endif %}

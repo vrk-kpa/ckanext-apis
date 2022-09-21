@@ -17,7 +17,7 @@
   <li class="active"><a href="">{{ h.resource_display_name(res)| truncate(30) }}</a></li>
 
   <section class="module">
-    <p class="apiset-title">{{ h.dataset_display_name(c.package) }}</p>
+    <p class="apiset-title">{{ h.dataset_display_name(g.package) }}</p>
   </section>
 
 {% endblock %}
@@ -33,11 +33,11 @@
     {% if description %}
       {{ description }}
     {% else %}
-      {% set notes = h.extra_translation(c.package, 'notes', markdown=True) %}
+      {% set notes = h.extra_translation(g.package, 'notes', markdown=True) %}
       {% if notes %}
         <h3>{{ _('From the dataset abstract') }}</h3>
         <blockquote>{{ notes }}</blockquote>
-        <p>{% trans dataset=c.package.title, url=h.url_for(controller='package', action='read', id=c.package['name']) %}Source: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}
+        <p>{% trans dataset=g.package.title, url=h.url_for(controller='package', action='read', id=g.package['name']) %}Source: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}
       {% endif %}
     {% endif %}
   </div>

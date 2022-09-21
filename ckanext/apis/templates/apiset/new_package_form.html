@@ -1,6 +1,6 @@
 {% import 'macros/form.html' as form %}
-{% set action = c.form_action or '' %}
-{% set form_style = c.form_style or c.action %}
+{% set action = g.form_action or '' %}
+{% set form_style = g.form_style or g.action %}
 {% set ckan_29_or_higher = h.ckan_version().split('.')[1] | int >= 9 %}
 {% set apiset_read_route = 'apis_blueprint.read' if ckan_29_or_higher else 'apis_read' %}
 {% set apiset_delete_route = 'apis_blueprint.delete' if ckan_29_or_higher else 'apis_delete' %}
