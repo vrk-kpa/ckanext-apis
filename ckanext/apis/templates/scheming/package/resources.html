@@ -1,0 +1,5 @@
+{% if dataset_type == 'apiset' %}
+  {% extends "apiset/resources.html" %}
+{% else %}
+  {% ckan_extends %}
+{% endif %}

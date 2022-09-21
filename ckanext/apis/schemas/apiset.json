@@ -199,20 +199,6 @@
       "required": true,
       "validators": "boolean_validator",
       "group_title": "Other information"
-    },
-    {
-      "field_name": "update_frequency",
-      "label": "Update frequency",
-      "form_placeholder":"eg. every second week",
-      "form_languages": ["fi", "en", "sv"],
-      "preset": "fluent_vocabulary_with_autocomplete",
-      "validators": "fluent_tags create_fluent_tags(update_frequency)",
-      "form_attrs": {
-        "data-module": "autocomplete",
-        "data-module-tags": "",
-        "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=update_frequency"
-      },
-      "description": "A short description of how frequently the data in the API will get updated."
     }
   ]
 }
