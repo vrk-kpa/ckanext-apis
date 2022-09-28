@@ -168,19 +168,6 @@
       "group_title": "API description"
     },
     {
-      "field_name": "documentation_translated",
-      "label": "Documentation",
-      "preset": "fluent_markdown",
-      "only_default_lang_required": true,
-      "form_placeholder": "eg. A detailed description of using the API",
-      "form_languages": ["fi", "en", "sv"],
-      "form_attrs": {
-        "class": "form-control"
-      },
-      "group_title": "API user guide",
-      "description": "API documentation"
-    },
-    {
       "field_name": "registration_required",
       "label": "Registration required",
       "preset": "select",
