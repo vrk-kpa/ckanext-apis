@@ -6,6 +6,7 @@ from sqlalchemy import text
 from ckan.lib.navl.dictization_functions import validate
 from ckanext.apis.logic.schema import apiset_package_list_schema, package_apiset_list_schema
 from ckanext.apis.model import ApisetPackageAssociation
+from collections import Counter
 
 _and_ = sqlalchemy.and_
 _func = sqlalchemy.func
@@ -113,10 +114,9 @@ def apiset_format_autocomplete(context, data_dict):
         if formats_string:
             resource_formats = formats_string.lower().split(',')
             for resource_format in resource_formats:
-                if resource_format.find(q) != -1 and resource_format not in formats:
+                if resource_format.find(q) != -1:
                     formats.append(resource_format)
 
-                if len(formats) > limit:
-                    break
+    formats_counter = Counter(formats)
 
-    return formats
+    return [value[0] for value in formats_counter.most_common(limit)]
