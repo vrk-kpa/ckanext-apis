@@ -149,9 +149,9 @@
       "group_title": "API file or link"
     },
     {
-      "field_name": "format",
+      "field_name": "formats",
       "label": "Format",
-      "preset": "sixodp_resource_format_autocomplete",
+      "preset": "apiset_resource_format_autocomplete",
       "description": "File format of the selected resource."
     },
     {

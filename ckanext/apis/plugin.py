@@ -51,6 +51,7 @@ class ApisPlugin(plugins.SingletonPlugin):
                 'package_apiset_list': get.package_apiset_list,
                 'apiset_package_association_create': create.apiset_package_association_create,
                 'apiset_package_association_delete': delete.apiset_package_association_delete,
+                'apiset_format_autocomplete': get.apiset_format_autocomplete,
                 }
 
     # IValidators
@@ -69,6 +70,21 @@ class ApisPlugin(plugins.SingletonPlugin):
             search_params['fq'] = fq
 
         return search_params
+
+    def before_index(self, pkg_dict):
+        if pkg_dict.get('type', None) == 'apiset':
+            org_pkg = toolkit.get_action('package_show')({}, {'id': pkg_dict.get('id')})
+            apiset_res_formats = []
+
+            for resource in org_pkg.get('resources', []):
+                for format in resource.get('formats', '').lower().split(','):
+                    if format not in apiset_res_formats:
+                        apiset_res_formats.append(format)
+
+            if len(apiset_res_formats) > 0:
+                pkg_dict['res_format'] = apiset_res_formats
+
+        return pkg_dict
 
     def package_form(self):
         return 'apiset/new_package_form.html'

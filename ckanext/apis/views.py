@@ -15,6 +15,7 @@ from typing import Any, Iterable, Optional, Union, cast
 import ckan.model as model
 import json
 import logging
+from ckan.views.api import _finish_ok
 
 _setup_template_variables = dataset._setup_template_variables
 _get_pkg_template = dataset._get_pkg_template
@@ -215,11 +216,30 @@ def new():
 def manage_datasets(id):
     return utils.manage_datasets_view(id)
 
+
+def apiset_format_autocomplete():
+    q = request.args.get(u'incomplete', u'')
+    limit = request.args.get(u'limit', 5)
+    formats = []
+    if q:
+        context = {u'model': model, u'session': model.Session,
+                   u'user': g.user, u'auth_user_obj': g.userobj}
+        data_dict = {u'q': q, u'limit': limit}
+        formats = get_action(u'apiset_format_autocomplete')(context, data_dict)
+
+    resultSet = {
+        u'ResultSet': {
+            u'Result': [{u'Format': format} for format in formats]
+        }
+    }
+    return _finish_ok(resultSet)
+
 apis.add_url_rule('/apiset/manage_datasets/<id>', view_func=manage_datasets, methods=[u'GET', u'POST'])
 apis.add_url_rule('/apiset/edit/<id>', view_func=EditView.as_view('edit'), methods=[u'GET', u'POST'])
 apis.add_url_rule('/apiset/resources/<id>', view_func=resources)
 apis.add_url_rule('/apiset/new', view_func=new)
 apis.add_url_rule('/apiset/<id>', view_func=read)
+apis.add_url_rule('/api/util/apiset/format_autocomplete', view_func=apiset_format_autocomplete)
 
 def get_blueprint():
     return [apis]
