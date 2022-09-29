@@ -1,0 +1,19 @@
+{
+    "scheming_presets_version": 1,
+    "about": "these are the default scheming field presets",
+    "about_url": "http://github.com/open-data/ckanext-scheming#preset",
+    "presets": [
+        {
+            "preset_name": "apiset_resource_format_autocomplete",
+            "values": {
+                "validators": "if_empty_guess_format ignore_missing clean_format upper_if_exists unicode",
+                "form_placeholder": "eg. CSV, XML or JSON",
+                "form_attrs": {
+                    "data-module": "autocomplete",
+                    "data-module-source": "/api/util/apiset/format_autocomplete?incomplete=?",
+                    "data-module-tags": ""
+                }
+            }
+        }
+    ]
+}
