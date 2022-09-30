@@ -6,13 +6,15 @@
   "dataset_fields": [
     {
       "field_name": "title_translated",
-      "label": "Title",
+      "label": "API name",
       "preset": "fluent_core_title_translated",
       "form_languages": ["fi", "en", "sv"],
-      "form_placeholder":"eg. A descriptive title",
+      "form_placeholder":"e.g. Suomi.fi Finnish Service Catalogue API",
       "only_default_lang_required": true,
-      "description": "A short and descriptive title for the API collection.",
-      "group_title": "Title of the API collection"
+      "description": "Give a short and descriptive name for the API. For example, Turku geospatial API (WFS)",
+      "group_title": "Title of the API collection",
+      "group_description": "* Required field",
+      "group_post_description": "<a href=\"https://www.avoindata.fi/fi/kayttoohjeet/rajapinnan-lisaaminen\" target=\"_blank\">Instructions on how to add APIs</a>"
     },
     {
       "field_name": "name",
@@ -22,27 +24,28 @@
       "form_attrs": {
         "class": "form-control"
       },
-      "divider": true
+      "divider": true,
+      "required": true
     },
     {
       "field_name": "notes_translated",
       "preset": "fluent_core_markdown_translated",
-      "form_placeholder": "eg. A detailed description",
+      "form_placeholder": "Write a description for API.",
       "form_languages": ["fi", "en", "sv"],
       "form_attrs": {
         "class": "form-control"
       },
-      "label": "Description",
+      "label": "API description",
       "display_snippet": null,
       "only_default_lang_required": true,
-      "description": "An universal, compact and easy to understand description of the added API collection.",
+      "description": "Describe: <ul><li>What kind of data is available through the API?</li><li>How can the API be used?</li><li>How can you get access to the API?</li><li>Where can you find more information about the API?</li></ul>",
       "divider": true,
-      "group_title": "Description of for the API collection"
+      "group_title": "Description for the API collection"
     },
     {
       "field_name": "keywords",
-      "label": "Tags",
-      "form_placeholder":"eg. Maps",
+      "label": "Keywords",
+      "form_placeholder":"e.g. maps",
       "form_languages": ["fi", "en", "sv"],
       "preset": "fluent_vocabulary_with_autocomplete",
       "validators": "fluent_tags create_fluent_tags(keywords)",
@@ -51,7 +54,7 @@
         "data-module-tags": "",
         "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=keywords"
       },
-      "description": "Keywords or tags through which users are able to find this dataset easily through the search page or other datasets which have the same tag.",
+      "description": "Select at least one keyword relating to your data that helps users to find your API.",
       "only_default_lang_required": true,
       "group_title": "Keywords and categories"
     },
@@ -63,113 +66,134 @@
       "choices_helper": "scheming_category_list",
       "description": "Select at least one category.",
       "validators": "save_to_groups",
-      "group_title": "Keywords and categories",
       "display_snippet": null,
       "divider": true
     },
     {
       "field_name": "private",
-      "label": "Visibility",
-      "form_snippet": "private.html",
-      "display_snippet": null,
+      "preset": "select",
+      "form_snippet": "radio.html",
+      "choices": [
+        {
+          "label": "Public",
+          "value": "false"
+        },
+        {
+          "label": "Private",
+          "value": "true"
+        }
+      ],
+      "default_value": "false",
       "validators": "boolean_validator",
-      "description": "Private APIs will only be seen by the logged in users of the API's organization. Public APIs will be listed publicly through the search.",
-      "group_title": "Other information"
-    },
-    {
-      "field_name": "license_id",
-      "label": "License",
-      "form_snippet": "license.html",
-      "display_snippet": "license.html",
-      "validators": "not_empty",
+      "label": "API visibility on opendata.fi",
+      "description": "You can set the visibility to private temporarily, for example if the API is still missing some information. Private APIs can only be viewed by the members of the organisation that provides the API.",
+      "group_title": "Other information",
       "required": true
     },
     {
-      "field_name": "access_rights",
-      "label": "Access Rights",
-      "preset": "fluent_markdown",
-      "form_placeholder": "eg. A detailed description",
+      "field_name": "license_id",
+      "label": "License for the data provided by the API",
+      "form_snippet": "license.html",
+      "display_snippet": "license.html",
+      "validators": "not_empty",
+      "description": "Select how the data that is available through the API is licensed. Use a <a href=\"https://creativecommons.org/licenses/by/4.0/deed.en\" target=\"_blank\">CC BY 4 license</a> if you want your organisation to be credited when someone uses your data. Use a <a href=\"https://creativecommons.org/publicdomain/zero/1.0/deed.en\" target=\"_blank\">CC0 license</a> if you want to give up all copyright.",
+      "required": true
+    },
+    {
+      "field_name": "access_rights_translated",
+      "label": "API access rights",
+      "preset": "fluent_core_markdown_translated",
+      "form_placeholder": "E.g. a link to the terms of service",
       "form_languages": ["fi", "en", "sv"],
       "form_attrs": {
         "class": "form-control"
       },
-      "divider": true
+      "divider": true,
+      "description": "Describe the possible restrictions in the use of the API and the pricing. For example, who can access the API, does the API require an API key, and where can users find it. \r\n Provide a link to the terms of service and to the possible service-level agreement (SLA) of the API."
     },
     {
       "field_name": "api_provider",
-      "label": "API provider",
-      "form_placeholder": "My organization",
+      "label": "API maintainer",
+      "form_placeholder": "e.g. Finnish Digital Agency",
       "form_attrs": {
         "class": "form-control"
       },
+      "validators": "not_empty",
+      "description": "Give the name of the organisation or department that is responsible for maintaining the API.",
       "required": true,
       "group_title": "Provider and maintainer of the API collection"
     },
     {
       "field_name": "api_provider_email",
-      "label": "API provider email",
-      "form_placeholder": "joe@example.com",
+      "label": "API maintainer email",
+      "form_placeholder": "e.g. opendata@dvv.fi",
       "form_attrs": {
         "class": "form-control"
       },
       "display_snippet": "email.html",
       "validators": "not_empty email_validator",
       "display_email_name_field": "api_provider",
-      "required": true
+      "required": true,
+      "description": "Enter the email address of the organisation's customer service, not an email address of an individual."
     },
     {
       "field_name": "owner_org",
-      "label": "Organization",
+      "label": "API publisher",
       "preset": "dataset_organization_ex",
-      "description": "The organization which owns the API."
+      "description": "Select the organisation that provides the API.",
+      "validators": "not_empty",
+      "required": true
     }
   ],
   "resource_fields": [
     {
       "field_name": "name_translated",
-      "label": "Name",
+      "label": "Resource name",
       "preset": "fluent_core_translated_extended",
       "form_languages": ["fi", "en", "sv"],
-      "form_placeholder":"eg. January 2011 Gold Prices",
+      "form_placeholder":"e.g. Finnish Service Catalogue OpenAPI description",
       "form_attrs": {
         "class": "form-control"
       },
-      "description": "A short and descriptive name for the API.",
+      "description": "Give the resource a descriptive name. For example, Turku geospatial API OpenAPI description",
+      "group_description": "* Required field",
       "group_title": "Name of the API"
     },
     {
       "field_name": "url",
       "label": "URL",
+      "upload_label": "Link to an API endpoint or API documentation",
       "preset": "resource_url_upload_ex",
       "form_attrs": {
         "class": "form-control"
       },
-      "description": "A file or url which describes the API endpoint.",
+      "group_description": "Add a link to an API endpoint or API documentation, for example OpenAPI. You can also add more information about the API as a pdf-file.",
       "required": true,
       "group_title": "API file or link"
     },
     {
       "field_name": "formats",
-      "label": "Format",
+      "label": "API data format",
       "preset": "apiset_resource_format_autocomplete",
-      "description": "File format of the selected resource."
+      "description": "Add the supported response formats."
     },
     {
       "field_name": "description_translated",
-      "label": "Description",
+      "label": "Technical API description",
       "preset": "fluent_core_markdown_translated",
       "validators": "fluent_text",
-      "form_placeholder": "eg. A detailed description",
+      "form_placeholder": "Write a technical description for the API.",
       "form_languages": ["fi", "en", "sv"],
       "form_attrs": {
         "class": "form-control"
       },
-      "description": "An universal, compact and easy to understand description of the added API.",
+      "description": "Describe:<ul><li>What kind of data the API returns?</li><li>Which version of the API is in use?</li><li>Where can you find the technical documentation for the API?</li></ul>",
       "group_title": "API description"
     },
     {
       "field_name": "registration_required",
-      "label": "Registration required",
+      "label": "Does the API require registration?",
+      "description": "If your API requires registration, describe the registration process in the Description field.",
       "preset": "select",
       "form_snippet": "radio.html",
       "display_snippet": "radio.html",

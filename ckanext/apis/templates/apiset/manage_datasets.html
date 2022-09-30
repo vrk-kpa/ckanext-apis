@@ -14,6 +14,12 @@
 <div class="page-container">
   <section class="apiset-datasets-block">
     <div>
+      <p>
+        {% trans %}
+        You can link the datasets the API provides to the API. The added datasets are shown on API's page.
+        Please note that you have to add the dataset to our service before you can link it to an API
+        {% endtrans %}
+      </p>
       <h3 class="page-heading">
         {% block apiset_datasets_associated %}
           {{ _('Datasets in this apiset') }}
@@ -64,13 +70,7 @@
     {% endblock %}
   </h3>
   <section>
-  {% set facets = {
-    'fields': g.fields_grouped,
-    'search': g.search_facets,
-    'titles': g.facet_titles,
-    'translated_fields': g.translated_fields,
-    'remove_field': g.remove_field }
-  %}
+  {% set facets = None %}
   {% set sorting = [
     (_('Relevance'), 'score desc, metadata_created desc'),
     (_('Name Ascending'), 'title_string asc'),
@@ -80,7 +80,7 @@
   %}
   
   <div>
-    {% snippet 'snippets/search_form.html', type='apiset', query=g.q, sorting=sorting, sorting_selected=g.sort_by_selected, count=g.page.item_count, facets=facets, show_empty=request.params, error=g.query_error, fields=g.fields %}
+    {% snippet 'snippets/search_form.html', type='apiset', query=g.q, sorting=sorting, sorting_selected=g.sort_by_selected, count=g.page.item_count, facets=facets, show_empty=request.params, error=g.query_error, fields=g.fields, no_bottom_border=True %}
     
     {% block package_search_results_list %}
       {% if g.page.items %}
