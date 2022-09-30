@@ -3,7 +3,6 @@ from ckan.lib.navl.dictization_functions import validate
 from ckanext.apis.logic.schema import apiset_package_association_create_schema
 from ckanext.apis.model import ApisetPackageAssociation
 from ckanext.apis.logic.converters import (convert_package_name_or_id_to_title_or_name)
-import logging
 
 def apiset_create(context, data_dict):
     data_dict['type'] = 'apiset'

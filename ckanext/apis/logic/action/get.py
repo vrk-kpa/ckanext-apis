@@ -1,9 +1,15 @@
+import json
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.dictization.model_dictize as model_dictize
-
+import sqlalchemy
+from sqlalchemy import text
 from ckan.lib.navl.dictization_functions import validate
 from ckanext.apis.logic.schema import apiset_package_list_schema, package_apiset_list_schema
 from ckanext.apis.model import ApisetPackageAssociation
+from collections import Counter
+
+_and_ = sqlalchemy.and_
+_func = sqlalchemy.func
 
 @toolkit.side_effect_free
 def apiset_show(context, data_dict):
@@ -71,3 +77,46 @@ def package_apiset_list(context, data_dict):
         package_list = _package_list['results']
 
     return package_list
+
+
+@toolkit.side_effect_free
+def apiset_format_autocomplete(context, data_dict):
+    '''Return a list of apiset resource formats whose names contain a string.
+    :param q: the string to search for
+    :type q: string
+    :param limit: the maximum number of resource formats to return (optional,
+        default: ``5``)
+    :type limit: int
+    :rtype: list of strings
+    '''
+    model = context['model']
+    session = context['session']
+
+    toolkit.check_access('apiset_format_autocomplete', context, data_dict)
+
+    q = data_dict['q']
+    limit = data_dict.get('limit', 5)
+
+    like_q = u'%"formats": "%' + q + u'%"%'
+
+    query = (session.query(model.Resource.extras, model.Package.id)
+        .join(model.Package)
+        .filter(_and_(
+            model.Resource.state == 'active',
+            model.Package.type == 'apiset',
+            model.Resource.extras.ilike(like_q)
+        )))
+
+    formats = []
+    for resource in query:
+        extras = resource.extras
+        formats_string = extras.get('formats', None)
+        if formats_string:
+            resource_formats = formats_string.lower().split(',')
+            for resource_format in resource_formats:
+                if resource_format.find(q) != -1:
+                    formats.append(resource_format)
+
+    formats_counter = Counter(formats)
+
+    return [value[0] for value in formats_counter.most_common(limit)]

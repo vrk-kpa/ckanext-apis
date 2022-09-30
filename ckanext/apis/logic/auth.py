@@ -16,6 +16,7 @@ def get_auth_functions():
         'apiset_package_list': apiset_package_list,
         'package_apiset_list': package_apiset_list,
         'apiset_admin_list': apiset_admin_list,
+        'apiset_format_autocomplete': apiset_format_autocomplete,
     }
 
 
@@ -78,3 +79,7 @@ def apiset_association_delete(context, data_dict):
     except toolkit.NotAuthorized:
         return {'success': False,
                 'msg': toolkit._('User {0} not authorized to delete apiset associations').format(user)}
+
+@toolkit.auth_allow_anonymous_access
+def apiset_format_autocomplete(context, data_dict):
+    return {'success': True}
