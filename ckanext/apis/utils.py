@@ -42,7 +42,7 @@ def check_edit_view_auth(id):
     except toolkit.NotAuthorized:
         return toolkit.abort(
             401,
-            _(f'User not authorized to edit {id}'))
+            _('User not authorized to edit {id}').format(id=id))
 
 def check_new_view_auth():
     context = {
