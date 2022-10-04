@@ -22,6 +22,7 @@ class ApisPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.ITranslation)
     plugins.implements(plugins.IAuthFunctions)
     plugins.implements(plugins.IValidators)
 
