@@ -30,17 +30,16 @@ def save_to_groups(key, data, errors, context):
             group_key = ('groups',) + list(group_patch.keys())[0]
             group_value = list(group_patch.values())[0]
             data[group_key] = group_value
-        else:
-            if isinstance(value, list):
-                data[key] = json.dumps(value)
-                groups_with_details = []
-                for identifier in value:
-                    groups_with_details.append({"name": identifier})
-                group_patch = flatten_list(groups_with_details)
+        elif isinstance(value, list):
+            data[key] = json.dumps(value)
+            groups_with_details = []
+            for identifier in value:
+                groups_with_details.append({"name": identifier})
+            group_patch = flatten_list(groups_with_details)
 
-                for k, v in list(group_patch.items()):
-                    group_key = ('groups',) + k
-                    data[group_key] = v
+            for k, v in list(group_patch.items()):
+                group_key = ('groups',) + k
+                data[group_key] = v
 
     else:
 
