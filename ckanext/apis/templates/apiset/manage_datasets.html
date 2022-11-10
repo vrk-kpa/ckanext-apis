@@ -80,7 +80,8 @@
   %}
   
   <div>
-    {% snippet 'snippets/search_form.html', type='apiset', query=g.q, sorting=sorting, sorting_selected=g.sort_by_selected, count=g.page.item_count, facets=facets, show_empty=request.params, error=g.query_error, fields=g.fields, no_bottom_border=True %}
+    {% snippet 'snippets/search_form.html', type='apiset', query=g.q, sorting=sorting, sorting_selected=g.sort_by_selected, 
+      count=g.page.item_count, facets=facets, show_empty=request.params, error=g.query_error, fields=g.fields, no_bottom_border=True %}
     
     {% block package_search_results_list %}
       {% if g.page.items %}
