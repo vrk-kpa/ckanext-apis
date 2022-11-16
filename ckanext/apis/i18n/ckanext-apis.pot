@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apis 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-30 06:30+0000\n"
+"POT-Creation-Date: 2022-11-16 13:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -298,7 +298,8 @@ msgstr ""
 msgid "Parameter '{parameter_name}' is not an integer"
 msgstr ""
 
-#: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288 ckanext/apis/views.py:115
+#: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288 ckanext/apis/views.py:117
+#: ckanext/apis/views.py:220
 msgid "Apiset not found"
 msgstr ""
 
@@ -322,12 +323,12 @@ msgid_plural "The datasets have been added to the apiset."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ckanext/apis/views.py:125 ckanext/apis/views.py:184
+#: ckanext/apis/views.py:127 ckanext/apis/views.py:186
 #, python-format
 msgid "User %r not authorized to edit %s"
 msgstr ""
 
-#: ckanext/apis/views.py:180 ckanext/apis/views.py:191
+#: ckanext/apis/views.py:182 ckanext/apis/views.py:193
 msgid "Dataset not found"
 msgstr ""
 
@@ -362,7 +363,6 @@ msgstr ""
 #: ckanext/apis/templates/apiset/edit_base.html:7
 #: ckanext/apis/templates/apiset/edit_base.html:18
 #: ckanext/apis/templates/apiset/edit_base.html:22
-#: ckanext/apis/templates/apiset/edit_base.html:44
 #: ckanext/apis/templates/apiset/search.html:8
 #: ckanext/apis/templates/apiset/search.html:11
 msgid "Apisets"
@@ -383,6 +383,10 @@ msgstr ""
 
 #: ckanext/apis/templates/apiset/edit_base.html:43
 msgid "Edit apiset"
+msgstr ""
+
+#: ckanext/apis/templates/apiset/edit_base.html:44
+msgid "Apiset resources"
 msgstr ""
 
 #: ckanext/apis/templates/apiset/edit_base.html:45
