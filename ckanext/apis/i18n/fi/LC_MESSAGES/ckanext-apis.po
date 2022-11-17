@@ -7,15 +7,16 @@
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2021
 # Pasi Laakso <pasi.laakso@gofore.com>, 2022
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2022
+# Ville Teräväinen, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apis 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-30 06:30+0000\n"
+"POT-Creation-Date: 2022-11-16 13:21+0000\n"
 "PO-Revision-Date: 2021-10-29 09:17+0000\n"
-"Last-Translator: Meeri Hakala <meeri.hakala@dvv.fi>, 2022\n"
+"Last-Translator: Ville Teräväinen, 2022\n"
 "Language-Team: Finnish (https://www.transifex.com/avoindata/teams/7979/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +44,7 @@ msgstr "esim. my-apis"
 
 #: ckanext/apis/translations.py:11
 msgid "eg. A detailed description"
-msgstr "Kirjoita kuvaus rajapintakokoelmasta"
+msgstr "Kirjoita kuvaus rajapinnasta"
 
 #: ckanext/apis/translations.py:12
 msgid "eg. Maps"
@@ -55,7 +56,7 @@ msgstr "Minun organisaationi"
 
 #: ckanext/apis/translations.py:14
 msgid "Title of the API collection"
-msgstr "Rajapintakokoelman nimi"
+msgstr "Rajapinnan nimi"
 
 #: ckanext/apis/translations.py:15
 msgid "Description for the API collection"
@@ -71,7 +72,7 @@ msgstr "Muut tiedot"
 
 #: ckanext/apis/translations.py:18
 msgid "Provider and maintainer of the API collection"
-msgstr "Rajapintakokoelman tuottaja ja ylläpitäjä"
+msgstr "Rajapinnan tuottaja ja ylläpitäjä"
 
 #: ckanext/apis/translations.py:19
 msgid "Name of the API"
@@ -79,7 +80,7 @@ msgstr "Rajapinnan nimi"
 
 #: ckanext/apis/translations.py:20
 msgid "API file or link"
-msgstr "Rajapinnan tiedosto"
+msgstr "Linkki rajapintaan tai dokumentaatioon"
 
 #: ckanext/apis/translations.py:21
 msgid "API user guide"
@@ -156,8 +157,9 @@ msgid ""
 "Enter the email address of the organisation's customer service, not an email"
 " address of an individual."
 msgstr ""
-"Kirjoita organisaation asiakastuen sähköpostiosoite eikä yksityishenkilöiden"
-" sähköpostiosoitteita. "
+"Kirjoita organisaation asiakastuen sähköpostiosoite ei yksityishenkilön "
+"sähköpostiosoitetta, jotta sähköposti pysyy toimivana myös "
+"henkilöstömuutoksien jälkeen. "
 
 #: ckanext/apis/translations.py:35
 msgid "e.g. opendata@dvv.fi"
@@ -303,7 +305,7 @@ msgid ""
 "Description field."
 msgstr ""
 "Jos rajapinnan käyttö vaatii rekisteröitymisen, kuvaile "
-"rekisteröintiprosessi Kuvaus-kentässä"
+"rekisteröitymisprosessi Kuvaus-kentässä."
 
 #: ckanext/apis/utils.py:45
 msgid "User not authorized to edit {id}"
@@ -339,7 +341,7 @@ msgid "Parameter '{parameter_name}' is not an integer"
 msgstr ""
 
 #: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288
-#: ckanext/apis/views.py:115
+#: ckanext/apis/views.py:117 ckanext/apis/views.py:220
 msgid "Apiset not found"
 msgstr "Rajapintaa ei löytynyt"
 
@@ -365,12 +367,12 @@ msgid_plural "The datasets have been added to the apiset."
 msgstr[0] "Tietoaineisto liitettiin rajapintaan."
 msgstr[1] "Tietoaineistot liitettiin rajapintaan."
 
-#: ckanext/apis/views.py:125 ckanext/apis/views.py:184
+#: ckanext/apis/views.py:127 ckanext/apis/views.py:186
 #, python-format
 msgid "User %r not authorized to edit %s"
 msgstr "Käyttäjällä %r ei ole oikeutta muokata %s"
 
-#: ckanext/apis/views.py:180 ckanext/apis/views.py:191
+#: ckanext/apis/views.py:182 ckanext/apis/views.py:193
 msgid "Dataset not found"
 msgstr "Tietoaineistoa ei löytynyt"
 
@@ -405,7 +407,6 @@ msgstr "Tietoaineisto"
 #: ckanext/apis/templates/apiset/edit_base.html:7
 #: ckanext/apis/templates/apiset/edit_base.html:18
 #: ckanext/apis/templates/apiset/edit_base.html:22
-#: ckanext/apis/templates/apiset/edit_base.html:44
 #: ckanext/apis/templates/apiset/search.html:8
 #: ckanext/apis/templates/apiset/search.html:11
 msgid "Apisets"
@@ -427,6 +428,10 @@ msgstr "Tarkastele rajapintaa"
 #: ckanext/apis/templates/apiset/edit_base.html:43
 msgid "Edit apiset"
 msgstr "Muokkaa rajapintaa"
+
+#: ckanext/apis/templates/apiset/edit_base.html:44
+msgid "Apiset resources"
+msgstr "Resurssit"
 
 #: ckanext/apis/templates/apiset/edit_base.html:45
 msgid "Link datasets"

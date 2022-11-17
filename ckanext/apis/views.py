@@ -4,6 +4,7 @@ from ast import keyword
 from flask import Blueprint
 import ckan.lib.base as base
 import ckan.views.dataset as dataset
+from ckan.views.dataset import GroupView as CkanDatasetGroupView
 import ckan.logic as logic
 import ckantoolkit as tk
 import ckan.lib.helpers as h
@@ -16,6 +17,7 @@ import ckan.model as model
 import json
 import logging
 from ckan.views.api import _finish_ok
+from ckan.plugins.toolkit import abort, ObjectNotFound
 
 _setup_template_variables = dataset._setup_template_variables
 _get_pkg_template = dataset._get_pkg_template
@@ -164,7 +166,7 @@ class EditView(dataset.EditView):
             }
         )
 
-def resources(id, package_type='dataset'):
+def resources(id, package_type='apiset'):
     context = {
         u'model': model,
         u'session': model.Session,
@@ -204,6 +206,20 @@ def resources(id, package_type='dataset'):
             u'pkg': pkg
         })
 
+
+class GroupView(CkanDatasetGroupView):
+    def post(self, package_type, id):
+        context, pkg_dict = self._prepare(id)
+
+        category_list = request.form.getlist('categories')
+        group_list = [{'name': c} for c in category_list]
+        try:
+            get_action('apiset_patch')(context, {"id": id, "groups": group_list, "category": category_list})
+            return h.redirect_to('apiset_groups', id=id)
+        except (ObjectNotFound, NotAuthorized):
+            return abort(404, _('Apiset not found'))
+
+
 def read(id):
     # use the default read function
     return dataset.read('apiset', id)
@@ -234,12 +250,58 @@ def apiset_format_autocomplete():
     }
     return _finish_ok(resultSet)
 
+
+def activity(id):
+    """Render this package's public activity stream page.
+    """
+    context = {
+        u'model': model,
+        u'session': model.Session,
+        u'user': g.user,
+        u'for_view': True,
+        u'auth_user_obj': g.userobj
+    }
+    data_dict = {u'id': id}
+    try:
+        pkg_dict = get_action(u'package_show')(context, data_dict)
+        pkg = context[u'package']
+        package_activity_stream = get_action(
+            u'package_activity_list')(
+            context, {u'id': pkg_dict[u'id']})
+        dataset_type = pkg_dict[u'type'] or u'apiset'
+
+    except NotFound:
+        return base.abort(404, _(u'Dataset not found'))
+    except NotAuthorized:
+        return base.abort(403, _(u'Unauthorized to read dataset %s') % id)
+
+    # TODO: remove
+    g.pkg_dict = pkg_dict
+    g.pkg = pkg
+
+    return base.render(
+        u'package/activity.html', {
+            u'dataset_type': dataset_type,
+            u'pkg_dict': pkg_dict,
+            u'pkg': pkg,
+            u'activity_stream': package_activity_stream,
+            u'id': id,  # i.e. package's current name,
+        })
+        
+    
+def search():
+    return dataset.search('apiset')
+
+
 apis.add_url_rule('/apiset/manage_datasets/<id>', view_func=manage_datasets, methods=[u'GET', u'POST'])
 apis.add_url_rule('/apiset/edit/<id>', view_func=EditView.as_view('edit'), methods=[u'GET', u'POST'])
 apis.add_url_rule('/apiset/resources/<id>', view_func=resources)
 apis.add_url_rule('/apiset/new', view_func=new)
+apis.add_url_rule('/apiset/groups/<id>', view_func=GroupView.as_view(str(u'groups')), defaults={'package_type': 'apiset'})
 apis.add_url_rule('/apiset/<id>', view_func=read)
 apis.add_url_rule('/api/util/apiset/format_autocomplete', view_func=apiset_format_autocomplete)
+apis.add_url_rule('/apiset/activity/<id>', view_func=activity)
+apis.add_url_rule('/apiset', view_func=search)
 
 def get_blueprint():
     return [apis]

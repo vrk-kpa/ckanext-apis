@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2022
+# Ville Teräväinen, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apis 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-30 06:30+0000\n"
+"POT-Creation-Date: 2022-11-16 13:21+0000\n"
 "PO-Revision-Date: 2021-10-29 09:17+0000\n"
-"Last-Translator: Meeri Hakala <meeri.hakala@dvv.fi>, 2022\n"
+"Last-Translator: Ville Teräväinen, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,11 +54,11 @@ msgstr ""
 
 #: ckanext/apis/translations.py:14
 msgid "Title of the API collection"
-msgstr ""
+msgstr "Title of the API"
 
 #: ckanext/apis/translations.py:15
 msgid "Description for the API collection"
-msgstr ""
+msgstr "Description for the API"
 
 #: ckanext/apis/translations.py:16
 msgid "Keywords and categories"
@@ -69,7 +70,7 @@ msgstr ""
 
 #: ckanext/apis/translations.py:18
 msgid "Provider and maintainer of the API collection"
-msgstr ""
+msgstr "Provider and maintainer of the API"
 
 #: ckanext/apis/translations.py:19
 msgid "Name of the API"
@@ -77,7 +78,7 @@ msgstr ""
 
 #: ckanext/apis/translations.py:20
 msgid "API file or link"
-msgstr ""
+msgstr "Link to the API or documentation"
 
 #: ckanext/apis/translations.py:21
 msgid "API user guide"
@@ -306,7 +307,7 @@ msgid "Parameter '{parameter_name}' is not an integer"
 msgstr ""
 
 #: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288
-#: ckanext/apis/views.py:115
+#: ckanext/apis/views.py:117 ckanext/apis/views.py:220
 msgid "Apiset not found"
 msgstr "API not found"
 
@@ -330,12 +331,12 @@ msgid_plural "The datasets have been added to the apiset."
 msgstr[0] "The dataset has been added to the API."
 msgstr[1] "The datasets have been added to the API."
 
-#: ckanext/apis/views.py:125 ckanext/apis/views.py:184
+#: ckanext/apis/views.py:127 ckanext/apis/views.py:186
 #, python-format
 msgid "User %r not authorized to edit %s"
 msgstr ""
 
-#: ckanext/apis/views.py:180 ckanext/apis/views.py:191
+#: ckanext/apis/views.py:182 ckanext/apis/views.py:193
 msgid "Dataset not found"
 msgstr ""
 
@@ -370,7 +371,6 @@ msgstr ""
 #: ckanext/apis/templates/apiset/edit_base.html:7
 #: ckanext/apis/templates/apiset/edit_base.html:18
 #: ckanext/apis/templates/apiset/edit_base.html:22
-#: ckanext/apis/templates/apiset/edit_base.html:44
 #: ckanext/apis/templates/apiset/search.html:8
 #: ckanext/apis/templates/apiset/search.html:11
 msgid "Apisets"
@@ -392,6 +392,10 @@ msgstr "View API"
 #: ckanext/apis/templates/apiset/edit_base.html:43
 msgid "Edit apiset"
 msgstr "Edit API"
+
+#: ckanext/apis/templates/apiset/edit_base.html:44
+msgid "Apiset resources"
+msgstr "Resources"
 
 #: ckanext/apis/templates/apiset/edit_base.html:45
 msgid "Link datasets"
