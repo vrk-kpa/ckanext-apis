@@ -74,7 +74,7 @@ class ApisPlugin(plugins.SingletonPlugin):
 
     def before_index(self, pkg_dict):
         if pkg_dict.get('type', None) == 'apiset':
-            org_pkg = toolkit.get_action('package_show')({}, {'id': pkg_dict.get('id')})
+            org_pkg = toolkit.get_action('package_show')({'ignore_auth': True}, {'id': pkg_dict.get('id')})
             apiset_res_formats = []
 
             for resource in org_pkg.get('resources', []):
