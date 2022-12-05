@@ -3,7 +3,7 @@
 {% set has_reorder = pkg_dict and pkg_dict.resources and pkg_dict.resources|length > 0 %}
 
 {% block subtitle %}
-  {{ _('Resources') if pkg.type!='apiset' else _("Apiset resources") }} {{ g.template_title_delimiter }} {{ h.dataset_display_name(pkg) }}
+  {{ _("Apiset resources") }} {{ g.template_title_delimiter }} {{ h.dataset_display_name(pkg) }}
 {% endblock %}
 
 {% block page_primary_action %}
