@@ -323,10 +323,6 @@ def activity(id):
     except NotAuthorized:
         return base.abort(403, _(u'Unauthorized to read apiset %s') % id)
 
-    blueprint, endpoint = tk.get_endpoint()
-    logging.warning(blueprint)
-    logging.warning(endpoint)
-
     # TODO: remove
     g.pkg_dict = pkg_dict
     g.pkg = pkg
