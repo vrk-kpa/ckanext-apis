@@ -208,6 +208,22 @@ def resources(id, package_type='apiset'):
 
 
 class GroupView(CkanDatasetGroupView):
+    def _prepare(self, id):
+        context = {
+            u'model': model,
+            u'session': model.Session,
+            u'user': g.user,
+            u'for_view': True,
+            u'auth_user_obj': g.userobj,
+            u'use_cache': False
+        }
+
+        try:
+            pkg_dict = get_action(u'package_show')(context, {u'id': id})
+        except (NotFound, NotAuthorized):
+            return base.abort(404, _(u'Apiset not found'))
+        return context, pkg_dict
+
     def post(self, package_type, id):
         context, pkg_dict = self._prepare(id)
 
@@ -218,6 +234,37 @@ class GroupView(CkanDatasetGroupView):
             return h.redirect_to('apiset_groups', id=id)
         except (ObjectNotFound, NotAuthorized):
             return abort(404, _('Apiset not found'))
+
+    def get(self, package_type, id):
+        context, pkg_dict = self._prepare(id)
+        dataset_type = pkg_dict[u'type'] or package_type
+        context[u'is_member'] = True
+        users_groups = get_action(u'group_list_authz')(context, {u'id': id})
+
+        pkg_group_ids = set(
+            group[u'id'] for group in pkg_dict.get(u'groups', [])
+        )
+
+        user_group_ids = set(group[u'id'] for group in users_groups)
+
+        group_dropdown = [[group[u'id'], group[u'display_name']]
+                          for group in users_groups
+                          if group[u'id'] not in pkg_group_ids]
+
+        for group in pkg_dict.get(u'groups', []):
+            group[u'user_member'] = (group[u'id'] in user_group_ids)
+
+        # TODO: remove
+        g.pkg_dict = pkg_dict
+        g.group_dropdown = group_dropdown
+
+        return base.render(
+            u'package/group_list.html', {
+                u'dataset_type': dataset_type,
+                u'pkg_dict': pkg_dict,
+                u'group_dropdown': group_dropdown
+            }
+        )
 
 
 def read(id):
@@ -261,6 +308,7 @@ def activity(id):
         u'for_view': True,
         u'auth_user_obj': g.userobj
     }
+
     data_dict = {u'id': id}
     try:
         pkg_dict = get_action(u'package_show')(context, data_dict)
@@ -271,9 +319,9 @@ def activity(id):
         dataset_type = pkg_dict[u'type'] or u'apiset'
 
     except NotFound:
-        return base.abort(404, _(u'Dataset not found'))
+        return base.abort(404, _(u'Apiset not found'))
     except NotAuthorized:
-        return base.abort(403, _(u'Unauthorized to read dataset %s') % id)
+        return base.abort(403, _(u'Unauthorized to read apiset %s') % id)
 
     # TODO: remove
     g.pkg_dict = pkg_dict
