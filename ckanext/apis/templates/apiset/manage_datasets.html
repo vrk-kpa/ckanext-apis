@@ -22,7 +22,7 @@
       </p>
       <h3 class="page-heading">
         {% block apiset_datasets_associated %}
-          {{ _('Datasets in this apiset') }}
+          {{ _('Datasets provided by the API') }}
         {% endblock %}
       </h3>
       {% if g.apiset_pkgs %}
@@ -78,11 +78,11 @@
     (_('Last Modified'), 'metadata_modified desc'),
     (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
   %}
-  
+
   <div>
-    {% snippet 'snippets/search_form.html', type='apiset', query=g.q, sorting=sorting, sorting_selected=g.sort_by_selected, 
+    {% snippet 'snippets/search_form.html', type='apiset', query=g.q, sorting=sorting, sorting_selected=g.sort_by_selected,
       count=g.page.item_count, facets=facets, show_empty=request.params, error=g.query_error, fields=g.fields, no_bottom_border=True %}
-    
+
     {% block package_search_results_list %}
       {% if g.page.items %}
         <form method="POST" data-module="basic-form">
@@ -129,7 +129,7 @@
     {% endblock %}
 
   </div>
-    
+
   </section>
 </div>
 {% endblock %}

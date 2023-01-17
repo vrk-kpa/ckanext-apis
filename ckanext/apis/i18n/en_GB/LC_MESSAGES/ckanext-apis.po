@@ -1,7 +1,7 @@
 # Translations template for ckanext-apis.
-# Copyright (C) 2022 ORGANIZATION
+# Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the ckanext-apis project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 # 
 # Translators:
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2022
@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apis 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-16 13:21+0000\n"
+"POT-Creation-Date: 2023-01-17 13:57+0000\n"
 "PO-Revision-Date: 2021-10-29 09:17+0000\n"
 "Last-Translator: Ville Teräväinen, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
@@ -307,7 +307,8 @@ msgid "Parameter '{parameter_name}' is not an integer"
 msgstr ""
 
 #: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288
-#: ckanext/apis/views.py:117 ckanext/apis/views.py:220
+#: ckanext/apis/views.py:117 ckanext/apis/views.py:224
+#: ckanext/apis/views.py:236 ckanext/apis/views.py:322
 msgid "Apiset not found"
 msgstr "API not found"
 
@@ -338,6 +339,11 @@ msgstr ""
 
 #: ckanext/apis/views.py:182 ckanext/apis/views.py:193
 msgid "Dataset not found"
+msgstr ""
+
+#: ckanext/apis/views.py:324
+#, python-format
+msgid "Unauthorized to read apiset %s"
 msgstr ""
 
 #: ckanext/apis/logic/auth.py:44
@@ -394,6 +400,7 @@ msgid "Edit apiset"
 msgstr "Edit API"
 
 #: ckanext/apis/templates/apiset/edit_base.html:44
+#: ckanext/apis/templates/apiset/resources.html:6
 msgid "Apiset resources"
 msgstr "Resources"
 
@@ -413,8 +420,8 @@ msgid ""
 msgstr ""
 
 #: ckanext/apis/templates/apiset/manage_datasets.html:25
-msgid "Datasets in this apiset"
-msgstr "Datasets provided by the API"
+msgid "Datasets provided by the API"
+msgstr ""
 
 #: ckanext/apis/templates/apiset/manage_datasets.html:53
 msgid "Remove from Apiset"
@@ -453,11 +460,11 @@ msgstr ""
 msgid "Popular"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/manage_datasets.html:90
+#: ckanext/apis/templates/apiset/manage_datasets.html:91
 msgid "Add to Apiset"
 msgstr "Add to API"
 
-#: ckanext/apis/templates/apiset/manage_datasets.html:124
+#: ckanext/apis/templates/apiset/manage_datasets.html:125
 msgid "No datasets could be found"
 msgstr ""
 
@@ -581,15 +588,11 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resources.html:5
-msgid "Resources"
-msgstr ""
-
-#: ckanext/apis/templates/apiset/resources.html:8
+#: ckanext/apis/templates/apiset/resources.html:10
 msgid "Add new resource"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resources.html:20
+#: ckanext/apis/templates/apiset/resources.html:22
 #, python-format
 msgid ""
 "<p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add"
