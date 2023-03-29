@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from ast import keyword
 from flask import Blueprint
 import ckan.lib.base as base
 import ckan.views.dataset as dataset
@@ -9,13 +8,8 @@ import ckan.logic as logic
 import ckantoolkit as tk
 import ckan.lib.helpers as h
 from ckan.common import _, g, request
-from ckan.views.home import CACHE_PARAMETERS
-import ckan.lib.navl.dictization_functions as dict_fns
 from . import utils
-from typing import Any, Iterable, Optional, Union, cast
 import ckan.model as model
-import json
-import logging
 from ckan.views.api import _finish_ok
 from ckan.plugins.toolkit import abort, ObjectNotFound
 
@@ -77,7 +71,7 @@ class EditView(dataset.EditView):
         # empty the groups from the old data, validation will fill them from new data
         data['groups'] = []
         # The form omits the category field if no categories are selected
-        if not 'category' in data_dict:
+        if 'category' not in data_dict:
             data_dict['category'] = ""
 
         data.update(data_dict)

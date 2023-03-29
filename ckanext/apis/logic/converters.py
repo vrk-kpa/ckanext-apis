@@ -3,7 +3,6 @@ import ckan.lib.navl.dictization_functions as df
 from ckan.common import _
 from ckan.lib.navl.dictization_functions import  missing, flatten_list, StopOnError
 import json
-import logging
 
 
 def convert_package_name_or_id_to_title_or_name(package_name_or_id, context):

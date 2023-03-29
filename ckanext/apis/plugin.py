@@ -10,8 +10,6 @@ from . import helpers
 from ckanext.apis.logic import auth
 import os
 import sys
-import json
-import logging
 from ckanext.apis.logic.converters import save_to_groups
 
 

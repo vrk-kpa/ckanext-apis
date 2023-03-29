@@ -1,5 +1,4 @@
 import logging
-import ckan.model as model
 from ckan.plugins import toolkit
 
 log = logging.getLogger(__name__)

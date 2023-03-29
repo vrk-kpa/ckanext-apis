@@ -7,7 +7,7 @@ import ckan.lib.helpers as h
 from collections import OrderedDict
 from urllib.parse import urlencode
 from ckan import model
-from ckan.plugins.toolkit import g, config, request, _, asbool
+from ckan.plugins.toolkit import _
 from .model import ApisetPackageAssociation
 
 
@@ -352,4 +352,3 @@ def manage_datasets_view(id):
     return toolkit.render('apiset/manage_datasets.html', extra_vars={'view_type': 'manage_datasets'})
 
 
-    

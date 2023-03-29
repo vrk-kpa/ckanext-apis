@@ -1,8 +1,6 @@
-import json
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.dictization.model_dictize as model_dictize
 import sqlalchemy
-from sqlalchemy import text
 from ckan.lib.navl.dictization_functions import validate
 from ckanext.apis.logic.schema import apiset_package_list_schema, package_apiset_list_schema
 from ckanext.apis.model import ApisetPackageAssociation
