@@ -1,19 +1,20 @@
 # Translations template for ckanext-apis.
-# Copyright (C) 2022 ORGANIZATION
+# Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the ckanext-apis project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 # 
 # Translators:
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2022
+# Suvi Nuttunen, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apis 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-30 06:30+0000\n"
+"POT-Creation-Date: 2023-01-17 13:57+0000\n"
 "PO-Revision-Date: 2021-10-29 09:17+0000\n"
-"Last-Translator: Meeri Hakala <meeri.hakala@dvv.fi>, 2022\n"
+"Last-Translator: Suvi Nuttunen, 2023\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,11 +54,11 @@ msgstr ""
 
 #: ckanext/apis/translations.py:14
 msgid "Title of the API collection"
-msgstr ""
+msgstr "Gränssnittets namn"
 
 #: ckanext/apis/translations.py:15
 msgid "Description for the API collection"
-msgstr ""
+msgstr "Beskrivning av gränssnitt"
 
 #: ckanext/apis/translations.py:16
 msgid "Keywords and categories"
@@ -92,6 +93,8 @@ msgid ""
 "<a href=\"https://www.avoindata.fi/fi/kayttoohjeet/rajapinnan-lisaaminen\" "
 "target=\"_blank\">Instructions on how to add APIs</a>"
 msgstr ""
+"<a href=\"https://www.avoindata.fi/fi/kayttoohjeet/rajapinnan-lisaaminen\" "
+"target=\"_blank\">Anvisningar om hur man lägger till gränssnitt</a>"
 
 #: ckanext/apis/translations.py:24
 msgid "API name"
@@ -121,10 +124,14 @@ msgid ""
 "API?</li><li>How can the API be used?</li><li>How can you get access to the "
 "API?</li><li>Where can you find more information about the API?</li></ul>"
 msgstr ""
+"Beskriv: <ul><li>Vilken typ av data finns tillgängligt via "
+"gränssnittet?</li><li>Hur kan man använda gränssnittet?</li><li>Hur kan man "
+"få tillgång till gränssnittet?</li><li>Vart hittar man mer information om "
+"gränssnittet?</li></ul>"
 
 #: ckanext/apis/translations.py:30
 msgid "API maintainer"
-msgstr ""
+msgstr "Gränssnittets administratör"
 
 #: ckanext/apis/translations.py:31
 msgid ""
@@ -138,7 +145,7 @@ msgstr ""
 
 #: ckanext/apis/translations.py:33
 msgid "API maintainer email"
-msgstr ""
+msgstr "Administratörens e-post"
 
 #: ckanext/apis/translations.py:34
 msgid ""
@@ -171,7 +178,7 @@ msgstr ""
 
 #: ckanext/apis/translations.py:40
 msgid "License for the data provided by the API"
-msgstr ""
+msgstr "Licens för data hämtat via API"
 
 #: ckanext/apis/translations.py:41
 msgid ""
@@ -249,7 +256,7 @@ msgstr ""
 
 #: ckanext/apis/translations.py:57
 msgid "Write a technical description for the API."
-msgstr ""
+msgstr "Skriv en teknisk beskrivning för gränssnittet"
 
 #: ckanext/apis/translations.py:58
 msgid ""
@@ -302,9 +309,10 @@ msgid "Parameter '{parameter_name}' is not an integer"
 msgstr ""
 
 #: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288
-#: ckanext/apis/views.py:115
+#: ckanext/apis/views.py:117 ckanext/apis/views.py:224
+#: ckanext/apis/views.py:236 ckanext/apis/views.py:322
 msgid "Apiset not found"
-msgstr ""
+msgstr "Gränssnittet hittades inte"
 
 #: ckanext/apis/utils.py:260 ckanext/apis/utils.py:290
 msgid "Unauthorized to read apiset"
@@ -326,13 +334,18 @@ msgid_plural "The datasets have been added to the apiset."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ckanext/apis/views.py:125 ckanext/apis/views.py:184
+#: ckanext/apis/views.py:127 ckanext/apis/views.py:186
 #, python-format
 msgid "User %r not authorized to edit %s"
 msgstr ""
 
-#: ckanext/apis/views.py:180 ckanext/apis/views.py:191
+#: ckanext/apis/views.py:182 ckanext/apis/views.py:193
 msgid "Dataset not found"
+msgstr ""
+
+#: ckanext/apis/views.py:324
+#, python-format
+msgid "Unauthorized to read apiset %s"
 msgstr ""
 
 #: ckanext/apis/logic/auth.py:44
@@ -366,11 +379,10 @@ msgstr ""
 #: ckanext/apis/templates/apiset/edit_base.html:7
 #: ckanext/apis/templates/apiset/edit_base.html:18
 #: ckanext/apis/templates/apiset/edit_base.html:22
-#: ckanext/apis/templates/apiset/edit_base.html:44
 #: ckanext/apis/templates/apiset/search.html:8
 #: ckanext/apis/templates/apiset/search.html:11
 msgid "Apisets"
-msgstr ""
+msgstr "Gränssnitt"
 
 #: ckanext/apis/templates/apiset/edit_base.html:20
 msgid "Edit"
@@ -379,15 +391,20 @@ msgstr ""
 #: ckanext/apis/templates/apiset/edit_base.html:23
 #: ckanext/apis/templates/apiset/new_package_form.html:79
 msgid "Create Apiset"
-msgstr ""
+msgstr "Skapa ett gränssnitt"
 
 #: ckanext/apis/templates/apiset/edit_base.html:37
 msgid "View apiset"
-msgstr ""
+msgstr "Visa gränssnitt"
 
 #: ckanext/apis/templates/apiset/edit_base.html:43
 msgid "Edit apiset"
-msgstr ""
+msgstr "Redigera gränssnitt"
+
+#: ckanext/apis/templates/apiset/edit_base.html:44
+#: ckanext/apis/templates/apiset/resources.html:6
+msgid "Apiset resources"
+msgstr "Gränssnitt resurser"
 
 #: ckanext/apis/templates/apiset/edit_base.html:45
 msgid "Link datasets"
@@ -405,7 +422,7 @@ msgid ""
 msgstr ""
 
 #: ckanext/apis/templates/apiset/manage_datasets.html:25
-msgid "Datasets in this apiset"
+msgid "Datasets provided by the API"
 msgstr ""
 
 #: ckanext/apis/templates/apiset/manage_datasets.html:53
@@ -438,18 +455,18 @@ msgstr ""
 #: ckanext/apis/templates/apiset/manage_datasets.html:78
 #: ckanext/apis/templates/apiset/search.html:34
 msgid "Last Modified"
-msgstr ""
+msgstr "Senast redigerat"
 
 #: ckanext/apis/templates/apiset/manage_datasets.html:79
 #: ckanext/apis/templates/apiset/search.html:35
 msgid "Popular"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/manage_datasets.html:90
+#: ckanext/apis/templates/apiset/manage_datasets.html:91
 msgid "Add to Apiset"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/manage_datasets.html:124
+#: ckanext/apis/templates/apiset/manage_datasets.html:125
 msgid "No datasets could be found"
 msgstr ""
 
@@ -573,15 +590,11 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resources.html:5
-msgid "Resources"
-msgstr ""
-
-#: ckanext/apis/templates/apiset/resources.html:8
+#: ckanext/apis/templates/apiset/resources.html:10
 msgid "Add new resource"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resources.html:20
+#: ckanext/apis/templates/apiset/resources.html:22
 #, python-format
 msgid ""
 "<p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add"
@@ -614,4 +627,4 @@ msgstr[1] ""
 
 #: ckanext/apis/templates/apiset/snippets/apiset_search_result_text.html:10
 msgid "No apisets found"
-msgstr ""
+msgstr "Inga gränssnitt hittades"
