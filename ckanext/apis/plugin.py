@@ -60,7 +60,7 @@ class ApisPlugin(plugins.SingletonPlugin):
             'save_to_groups': save_to_groups,
         }   
 
-    def before_search(self, search_params):
+    def before_dataset_search(self, search_params):
         '''Prevents the apisets being shown in dataset search results.'''
 
         fq = search_params.get('fq', '')
@@ -70,7 +70,7 @@ class ApisPlugin(plugins.SingletonPlugin):
 
         return search_params
 
-    def before_index(self, pkg_dict):
+    def before_dataset_index(self, pkg_dict):
         if pkg_dict.get('type', None) == 'apiset':
             org_pkg = toolkit.get_action('package_show')({'ignore_auth': True}, {'id': pkg_dict.get('id')})
             apiset_res_formats = []

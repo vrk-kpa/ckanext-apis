@@ -30,7 +30,7 @@ apis = Blueprint('apis_blueprint', __name__)
 class EditView(dataset.EditView):
 
     def post(self, id):
-        context = self._prepare(id)
+        context = self._prepare()
         utils.check_edit_view_auth(id)
 
         data_dict = dataset.clean_dict(dataset.dict_fns.unflatten(dataset.tuplize_dict(dataset.parse_params(
@@ -91,7 +91,7 @@ class EditView(dataset.EditView):
 
     def get(self, id, data=None, errors=None, error_summary=None):
         utils.check_new_view_auth()
-        context = self._prepare(id, data)
+        context = self._prepare()
         package_type = utils.DATASET_TYPE_NAME
 
         try:
