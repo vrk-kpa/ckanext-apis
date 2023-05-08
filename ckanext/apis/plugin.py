@@ -60,6 +60,10 @@ class ApisPlugin(plugins.SingletonPlugin):
             'save_to_groups': save_to_groups,
         }   
 
+    def before_search(self, search_params):
+        '''CKAN <2.10 compatibility method'''
+        return self.before_dataset_search(search_params)
+
     def before_dataset_search(self, search_params):
         '''Prevents the apisets being shown in dataset search results.'''
 
@@ -69,6 +73,10 @@ class ApisPlugin(plugins.SingletonPlugin):
             search_params['fq'] = fq
 
         return search_params
+
+    def before_index(self, pkg_dict):
+        '''CKAN <2.10 compatibility method'''
+        return self.before_dataset_index(pkg_dict)
 
     def before_dataset_index(self, pkg_dict):
         if pkg_dict.get('type', None) == 'apiset':
