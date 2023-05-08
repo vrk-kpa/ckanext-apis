@@ -1,4 +1,6 @@
-{% extends 'apiset/edit_base.html' %}
+{% extends 'package/resource_read.html' %}
+
+{% set res = resource %}
 
 {%- set exclude_fields = [
     'name',
@@ -7,7 +9,6 @@
     'format',
     ] -%}
 {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
-
 
 {% block resource_view_content %}
 {% endblock %}
@@ -37,7 +38,7 @@
       {% if notes %}
         <h3>{{ _('From the dataset abstract') }}</h3>
         <blockquote>{{ notes }}</blockquote>
-        <p>{% trans dataset=g.package.title, url=h.url_for(controller='package', action='read', id=g.package['name']) %}Source: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}
+        <p>{% trans dataset=g.package.title, url=h.url_for('apiset.read', id=g.package['name']) %}Source: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}
       {% endif %}
     {% endif %}
   </div>
