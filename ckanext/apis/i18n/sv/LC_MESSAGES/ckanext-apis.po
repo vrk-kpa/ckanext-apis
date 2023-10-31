@@ -15,7 +15,7 @@ msgstr ""
 "POT-Creation-Date: 2023-01-17 13:57+0000\n"
 "PO-Revision-Date: 2021-10-29 09:17+0000\n"
 "Last-Translator: Suvi Nuttunen, 2023\n"
-"Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
+"Language-Team: Swedish (https://app.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,11 +66,11 @@ msgstr ""
 
 #: ckanext/apis/translations.py:17
 msgid "Other information"
-msgstr ""
+msgstr "Övrig information"
 
 #: ckanext/apis/translations.py:18
 msgid "Provider and maintainer of the API collection"
-msgstr ""
+msgstr "Gränssnittets producent ach administratör"
 
 #: ckanext/apis/translations.py:19
 msgid "Name of the API"
@@ -102,7 +102,7 @@ msgstr ""
 
 #: ckanext/apis/translations.py:25
 msgid "e.g. Suomi.fi Finnish Service Catalogue API"
-msgstr ""
+msgstr "t.ex. Suomi.fi-servicedatalagret API"
 
 #: ckanext/apis/translations.py:26
 msgid "API description"
@@ -113,10 +113,12 @@ msgid ""
 "Give a short and descriptive name for the API. For example, Turku geospatial"
 " API (WFS)"
 msgstr ""
+"Ange en kort och beskrivande namn för gränssnittet. Till exempel, Åbo "
+"geospatial API (WFS)"
 
 #: ckanext/apis/translations.py:28
 msgid "Write a description for API."
-msgstr ""
+msgstr "Ange en beskrivning för gränssnittet"
 
 #: ckanext/apis/translations.py:29
 msgid ""
@@ -138,10 +140,12 @@ msgid ""
 "Give the name of the organisation or department that is responsible for "
 "maintaining the API."
 msgstr ""
+"Ange namnet på den organisationen eller avdelningen som ansvarar för "
+"underhållet av gränssnittet."
 
 #: ckanext/apis/translations.py:32
 msgid "e.g. Finnish Digital Agency"
-msgstr ""
+msgstr "t.ex. Myndigheten för digitalisering och befolkningsdata"
 
 #: ckanext/apis/translations.py:33
 msgid "API maintainer email"
@@ -152,6 +156,8 @@ msgid ""
 "Enter the email address of the organisation's customer service, not an email"
 " address of an individual."
 msgstr ""
+"Ange e-postaddressen till organisationen kundtjäst, inte en e-postaddress "
+"till en individ."
 
 #: ckanext/apis/translations.py:35
 msgid "e.g. opendata@dvv.fi"
@@ -159,7 +165,7 @@ msgstr ""
 
 #: ckanext/apis/translations.py:36
 msgid "API visibility on opendata.fi"
-msgstr ""
+msgstr "Synligheten av gränssnittet"
 
 #: ckanext/apis/translations.py:37
 msgid ""
@@ -167,14 +173,17 @@ msgid ""
 " still missing some information. Private APIs can only be viewed by the "
 "members of the organisation that provides the API."
 msgstr ""
+"Du kan tillfälligt sätta synligheten till privat till exempel om "
+"gränssnittet saknar infromation. Privata gränssnitt visas endast för alla "
+"inloggade medlemmar i producentorganisationen."
 
 #: ckanext/apis/translations.py:38
 msgid "API publisher"
-msgstr ""
+msgstr "Gränssnittets producent"
 
 #: ckanext/apis/translations.py:39
 msgid "Select the organisation that provides the API."
-msgstr ""
+msgstr "Välj den organisationen som erbjuder gränssnittet."
 
 #: ckanext/apis/translations.py:40
 msgid "License for the data provided by the API"
@@ -189,6 +198,12 @@ msgid ""
 "href=\"https://creativecommons.org/publicdomain/zero/1.0/deed.en\" "
 "target=\"_blank\">CC0 license</a> if you want to give up all copyright."
 msgstr ""
+"Välj licens för data hämtat via gränssnittet. Använd en <a "
+"href=\"https://creativecommons.org/licenses/by/4.0/deed.en\" "
+"target=\"_blank\">CC BY 4 licens</a> om du vill att namnet på din "
+"organisation anges när någon använder din data. Använd en <a "
+"href=\"https://creativecommons.org/publicdomain/zero/1.0/deed.en\" "
+"target=\"_blank\">CC0 licens</a> om du vill avsäga dig dina upphovsrätt."
 
 #: ckanext/apis/translations.py:42
 msgid "Keywords"
@@ -199,24 +214,30 @@ msgid ""
 "Select at least one keyword relating to your data that helps users to find "
 "your API."
 msgstr ""
+"Välj minst ett nyckelord relaterade till data. Nyckelordet gör det lättare "
+"att hitta gränssnittet."
 
 #: ckanext/apis/translations.py:44
 msgid "e.g. maps"
-msgstr ""
+msgstr "t.ex. kartor"
 
 #: ckanext/apis/translations.py:45
 msgid "API access rights"
-msgstr ""
+msgstr "Gränssnittets användningsrättigheter"
 
 #: ckanext/apis/translations.py:46
 msgid ""
 "Describe the possible restrictions in the use of the API and the pricing. For example, who can access the API, does the API require an API key, and where can users find it. \r\n"
 " Provide a link to the terms of service and to the possible service-level agreement (SLA) of the API."
 msgstr ""
+"Beskriv de möjliga begränsningar i användningen av gränssnittet och "
+"prissättningen. Till exempel vem har tillgång till gränssnittet, kräver "
+"gränssnittet en API-nyckel och var kan användare hitta den. Ange en länk "
+"till användarvillkoren och gränssnittets möjliga servicenivåavtal (SLA)."
 
 #: ckanext/apis/translations.py:47
 msgid "E.g. a link to the terms of service"
-msgstr ""
+msgstr "t.ex. en länk till användarvillkoren"
 
 #: ckanext/apis/translations.py:49
 msgid "Resource name"
@@ -622,8 +643,8 @@ msgstr ""
 #: ckanext/apis/templates/apiset/snippets/apiset_search_result_text.html:9
 msgid "{number} apiset found"
 msgid_plural "{number} apisets found"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{number} gränssnitt hittades"
+msgstr[1] "{number} gränssnitt hittades"
 
 #: ckanext/apis/templates/apiset/snippets/apiset_search_result_text.html:10
 msgid "No apisets found"
