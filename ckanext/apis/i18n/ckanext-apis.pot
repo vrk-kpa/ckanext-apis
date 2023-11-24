@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apis 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-17 13:57+0000\n"
+"POT-Creation-Date: 2023-11-24 10:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,87 +88,87 @@ msgid ""
 "target=\"_blank\">Instructions on how to add APIs</a>"
 msgstr ""
 
-#: ckanext/apis/translations.py:24
+#: ckanext/apis/translations.py:25
 msgid "API name"
 msgstr ""
 
-#: ckanext/apis/translations.py:25
+#: ckanext/apis/translations.py:26
 msgid "e.g. Suomi.fi Finnish Service Catalogue API"
 msgstr ""
 
-#: ckanext/apis/translations.py:26
+#: ckanext/apis/translations.py:27
 msgid "API description"
 msgstr ""
 
-#: ckanext/apis/translations.py:27
+#: ckanext/apis/translations.py:28
 msgid ""
 "Give a short and descriptive name for the API. For example, Turku geospatial "
 "API (WFS)"
 msgstr ""
 
-#: ckanext/apis/translations.py:28
+#: ckanext/apis/translations.py:29
 msgid "Write a description for API."
 msgstr ""
 
-#: ckanext/apis/translations.py:29
+#: ckanext/apis/translations.py:30
 msgid ""
 "Describe: <ul><li>What kind of data is available through the API?</li><li>How"
 " can the API be used?</li><li>How can you get access to the "
 "API?</li><li>Where can you find more information about the API?</li></ul>"
 msgstr ""
 
-#: ckanext/apis/translations.py:30
+#: ckanext/apis/translations.py:32
 msgid "API maintainer"
 msgstr ""
 
-#: ckanext/apis/translations.py:31
+#: ckanext/apis/translations.py:33
 msgid ""
 "Give the name of the organisation or department that is responsible for "
 "maintaining the API."
 msgstr ""
 
-#: ckanext/apis/translations.py:32
+#: ckanext/apis/translations.py:34
 msgid "e.g. Finnish Digital Agency"
 msgstr ""
 
-#: ckanext/apis/translations.py:33
+#: ckanext/apis/translations.py:35
 msgid "API maintainer email"
 msgstr ""
 
-#: ckanext/apis/translations.py:34
+#: ckanext/apis/translations.py:36
 msgid ""
 "Enter the email address of the organisation's customer service, not an email "
 "address of an individual."
 msgstr ""
 
-#: ckanext/apis/translations.py:35
+#: ckanext/apis/translations.py:37
 msgid "e.g. opendata@dvv.fi"
 msgstr ""
 
-#: ckanext/apis/translations.py:36
-msgid "API visibility on opendata.fi"
+#: ckanext/apis/translations.py:38
+msgid "API visibility on Suomi.fi Open Data"
 msgstr ""
 
-#: ckanext/apis/translations.py:37
+#: ckanext/apis/translations.py:39
 msgid ""
 "You can set the visibility to private temporarily, for example if the API is "
 "still missing some information. Private APIs can only be viewed by the "
 "members of the organisation that provides the API."
 msgstr ""
 
-#: ckanext/apis/translations.py:38
+#: ckanext/apis/translations.py:41
 msgid "API publisher"
 msgstr ""
 
-#: ckanext/apis/translations.py:39
+#: ckanext/apis/translations.py:42
 msgid "Select the organisation that provides the API."
 msgstr ""
 
-#: ckanext/apis/translations.py:40
+#: ckanext/apis/translations.py:43
 msgid "License for the data provided by the API"
 msgstr ""
 
-#: ckanext/apis/translations.py:41
+#: ckanext/apis/translations.py:44
 msgid ""
 "Select how the data that is available through the API is licensed. Use a <a "
 "href=\"https://creativecommons.org/licenses/by/4.0/deed.en\" "
@@ -178,25 +178,25 @@ msgid ""
 "target=\"_blank\">CC0 license</a> if you want to give up all copyright."
 msgstr ""
 
-#: ckanext/apis/translations.py:42
+#: ckanext/apis/translations.py:49
 msgid "Keywords"
 msgstr ""
 
-#: ckanext/apis/translations.py:43
+#: ckanext/apis/translations.py:50
 msgid ""
 "Select at least one keyword relating to your data that helps users to find "
 "your API."
 msgstr ""
 
-#: ckanext/apis/translations.py:44
+#: ckanext/apis/translations.py:51
 msgid "e.g. maps"
 msgstr ""
 
-#: ckanext/apis/translations.py:45
+#: ckanext/apis/translations.py:52
 msgid "API access rights"
 msgstr ""
 
-#: ckanext/apis/translations.py:46
+#: ckanext/apis/translations.py:53
 msgid ""
 "Describe the possible restrictions in the use of the API and the pricing. For"
 " example, who can access the API, does the API require an API key, and where "
@@ -205,62 +205,62 @@ msgid ""
 "agreement (SLA) of the API."
 msgstr ""
 
-#: ckanext/apis/translations.py:47
+#: ckanext/apis/translations.py:56
 msgid "E.g. a link to the terms of service"
 msgstr ""
 
-#: ckanext/apis/translations.py:49
+#: ckanext/apis/translations.py:58
 msgid "Resource name"
 msgstr ""
 
-#: ckanext/apis/translations.py:50
+#: ckanext/apis/translations.py:59
 msgid "e.g. Finnish Service Catalogue OpenAPI description"
 msgstr ""
 
-#: ckanext/apis/translations.py:51
+#: ckanext/apis/translations.py:60
 msgid ""
 "Give the resource a descriptive name. For example, Turku geospatial API "
 "OpenAPI description"
 msgstr ""
 
-#: ckanext/apis/translations.py:52
+#: ckanext/apis/translations.py:61
 msgid "Link to an API endpoint or API documentation"
 msgstr ""
 
-#: ckanext/apis/translations.py:53
+#: ckanext/apis/translations.py:62
 msgid ""
 "Add a link to an API endpoint or API documentation, for example OpenAPI. You "
 "can also add more information about the API as a pdf-file."
 msgstr ""
 
-#: ckanext/apis/translations.py:54
+#: ckanext/apis/translations.py:64
 msgid "API data format"
 msgstr ""
 
-#: ckanext/apis/translations.py:55
+#: ckanext/apis/translations.py:65
 msgid "Add the supported response formats."
 msgstr ""
 
-#: ckanext/apis/translations.py:56
+#: ckanext/apis/translations.py:66
 msgid "Technical API description"
 msgstr ""
 
-#: ckanext/apis/translations.py:57
+#: ckanext/apis/translations.py:67
 msgid "Write a technical description for the API."
 msgstr ""
 
-#: ckanext/apis/translations.py:58
+#: ckanext/apis/translations.py:68
 msgid ""
 "Describe:<ul><li>What kind of data the API returns?</li><li>Which version of "
 "the API is in use?</li><li>Where can you find the technical documentation for"
 " the API?</li></ul>"
 msgstr ""
 
-#: ckanext/apis/translations.py:59
+#: ckanext/apis/translations.py:70
 msgid "Does the API require registration?"
 msgstr ""
 
-#: ckanext/apis/translations.py:60
+#: ckanext/apis/translations.py:71
 msgid ""
 "If your API requires registration, describe the registration process in the "
 "Description field."
@@ -298,8 +298,8 @@ msgstr ""
 msgid "Parameter '{parameter_name}' is not an integer"
 msgstr ""
 
-#: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288 ckanext/apis/views.py:117
-#: ckanext/apis/views.py:224 ckanext/apis/views.py:236 ckanext/apis/views.py:322
+#: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288 ckanext/apis/views.py:120
+#: ckanext/apis/views.py:227 ckanext/apis/views.py:239 ckanext/apis/views.py:325
 msgid "Apiset not found"
 msgstr ""
 
@@ -323,45 +323,45 @@ msgid_plural "The datasets have been added to the apiset."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ckanext/apis/views.py:127 ckanext/apis/views.py:186
+#: ckanext/apis/views.py:130 ckanext/apis/views.py:189
 #, python-format
 msgid "User %r not authorized to edit %s"
 msgstr ""
 
-#: ckanext/apis/views.py:182 ckanext/apis/views.py:193
+#: ckanext/apis/views.py:185 ckanext/apis/views.py:196
 msgid "Dataset not found"
 msgstr ""
 
-#: ckanext/apis/views.py:324
+#: ckanext/apis/views.py:327
 #, python-format
 msgid "Unauthorized to read apiset %s"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:44
+#: ckanext/apis/logic/auth.py:43
 msgid "User {0} not authorized to edit apisets"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:53
+#: ckanext/apis/logic/auth.py:52
 msgid "User {0} not authorized to create apisets"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:62
+#: ckanext/apis/logic/auth.py:61
 msgid "User {0} not authorized to associate apisets"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:72
+#: ckanext/apis/logic/auth.py:71
 msgid "User {0} not authorized to delete apisets"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:81
+#: ckanext/apis/logic/auth.py:80
 msgid "User {0} not authorized to delete apiset associations"
 msgstr ""
 
-#: ckanext/apis/logic/converters.py:17 ckanext/apis/logic/validators.py:24
+#: ckanext/apis/logic/converters.py:16 ckanext/apis/logic/validators.py:24
 msgid "Not found"
 msgstr ""
 
-#: ckanext/apis/logic/converters.py:17 ckanext/apis/logic/validators.py:24
+#: ckanext/apis/logic/converters.py:16 ckanext/apis/logic/validators.py:24
 msgid "Dataset"
 msgstr ""
 
@@ -540,42 +540,42 @@ msgid ""
 "License</a>."
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resource_read.html:38
+#: ckanext/apis/templates/apiset/resource_read.html:39
 msgid "From the dataset abstract"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resource_read.html:40
+#: ckanext/apis/templates/apiset/resource_read.html:41
 #, python-format
 msgid "Source: <a href=\"%(url)s\">%(dataset)s</a>"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resource_read.html:51
+#: ckanext/apis/templates/apiset/resource_read.html:52
 msgid "API User Guide"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resource_read.html:62
+#: ckanext/apis/templates/apiset/resource_read.html:63
 msgid "Additional Information"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resource_read.html:67
+#: ckanext/apis/templates/apiset/resource_read.html:68
 msgid "Last updated"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resource_read.html:68
-#: ckanext/apis/templates/apiset/resource_read.html:74
-#: ckanext/apis/templates/apiset/resource_read.html:80
+#: ckanext/apis/templates/apiset/resource_read.html:69
+#: ckanext/apis/templates/apiset/resource_read.html:75
+#: ckanext/apis/templates/apiset/resource_read.html:81
 msgid "unknown"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resource_read.html:73
+#: ckanext/apis/templates/apiset/resource_read.html:74
 msgid "Created"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resource_read.html:79
+#: ckanext/apis/templates/apiset/resource_read.html:80
 msgid "Format"
 msgstr ""
 
-#: ckanext/apis/templates/apiset/resource_read.html:85
+#: ckanext/apis/templates/apiset/resource_read.html:86
 msgid "License"
 msgstr ""
 

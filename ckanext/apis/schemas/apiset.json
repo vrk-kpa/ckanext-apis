@@ -85,7 +85,7 @@
       ],
       "default_value": "false",
       "validators": "boolean_validator",
-      "label": "API visibility on opendata.fi",
+      "label": "API visibility on Suomi.fi Open Data",
       "description": "You can set the visibility to private temporarily, for example if the API is still missing some information. Private APIs can only be viewed by the members of the organisation that provides the API.",
       "group_title": "Other information",
       "required": true
