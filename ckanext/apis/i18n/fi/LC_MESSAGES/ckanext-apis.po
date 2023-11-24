@@ -10,15 +10,16 @@
 # Ville Teräväinen, 2022
 # Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2023
 # Suvi Nuttunen, 2023
+# Teemu Erkkola <teemu.erkkola@iki.fi>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apis 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-17 13:57+0000\n"
+"POT-Creation-Date: 2023-11-24 10:28+0000\n"
 "PO-Revision-Date: 2021-10-29 09:17+0000\n"
-"Last-Translator: Suvi Nuttunen, 2023\n"
+"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2023\n"
 "Language-Team: Finnish (https://app.transifex.com/avoindata/teams/7979/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -100,19 +101,19 @@ msgstr ""
 "<a href=\"https://www.avoindata.fi/fi/kayttoohjeet/rajapinnan-lisaaminen\" "
 "target=\"_blank\">Lue ohjeet rajapintojen lisäämiseen</a>"
 
-#: ckanext/apis/translations.py:24
+#: ckanext/apis/translations.py:25
 msgid "API name"
 msgstr "Rajapinnan nimi"
 
-#: ckanext/apis/translations.py:25
+#: ckanext/apis/translations.py:26
 msgid "e.g. Suomi.fi Finnish Service Catalogue API"
 msgstr "esim. Suomi.fi-palvelutietovarannon API"
 
-#: ckanext/apis/translations.py:26
+#: ckanext/apis/translations.py:27
 msgid "API description"
 msgstr "Rajapinnan kuvaus"
 
-#: ckanext/apis/translations.py:27
+#: ckanext/apis/translations.py:28
 msgid ""
 "Give a short and descriptive name for the API. For example, Turku geospatial"
 " API (WFS)"
@@ -120,11 +121,11 @@ msgstr ""
 "Nimeä rajapinta lyhyesti ja kuvaavasti. Esimerkiksi Turun "
 "paikkatietorajapinta (WFS)"
 
-#: ckanext/apis/translations.py:28
+#: ckanext/apis/translations.py:29
 msgid "Write a description for API."
 msgstr "Kirjoita kuvaus rajapinnalle"
 
-#: ckanext/apis/translations.py:29
+#: ckanext/apis/translations.py:30
 msgid ""
 "Describe: <ul><li>What kind of data is available through the "
 "API?</li><li>How can the API be used?</li><li>How can you get access to the "
@@ -135,26 +136,26 @@ msgstr ""
 "käyttää?</li><li>Miten rajapintaan saa pääsyn?</li><li>Mistä löytää lisää "
 "tietoa rajapinnasta?</li></ul>"
 
-#: ckanext/apis/translations.py:30
+#: ckanext/apis/translations.py:32
 msgid "API maintainer"
 msgstr "Rajapinnan ylläpitäjä"
 
-#: ckanext/apis/translations.py:31
+#: ckanext/apis/translations.py:33
 msgid ""
 "Give the name of the organisation or department that is responsible for "
 "maintaining the API."
 msgstr ""
 "Anna organisaation tai organisaatioyksikön nimi, joka ylläpitää rajapintaa."
 
-#: ckanext/apis/translations.py:32
+#: ckanext/apis/translations.py:34
 msgid "e.g. Finnish Digital Agency"
 msgstr "esim. Digi- ja väestötietovirasto"
 
-#: ckanext/apis/translations.py:33
+#: ckanext/apis/translations.py:35
 msgid "API maintainer email"
 msgstr "Rajapinnan ylläpitäjän sähköpostiosoite"
 
-#: ckanext/apis/translations.py:34
+#: ckanext/apis/translations.py:36
 msgid ""
 "Enter the email address of the organisation's customer service, not an email"
 " address of an individual."
@@ -163,15 +164,15 @@ msgstr ""
 "sähköpostiosoitetta, jotta sähköposti pysyy toimivana myös "
 "henkilöstömuutoksien jälkeen. "
 
-#: ckanext/apis/translations.py:35
+#: ckanext/apis/translations.py:37
 msgid "e.g. opendata@dvv.fi"
 msgstr "esim. avoindata@dvv.fi"
 
-#: ckanext/apis/translations.py:36
-msgid "API visibility on opendata.fi"
-msgstr "Rajapinnan näkyvyys avoindata.fi:ssä"
+#: ckanext/apis/translations.py:38
+msgid "API visibility on Suomi.fi Open Data"
+msgstr "Rajapinnan näkyvyys Suomi.fi-avoindatassa"
 
-#: ckanext/apis/translations.py:37
+#: ckanext/apis/translations.py:39
 msgid ""
 "You can set the visibility to private temporarily, for example if the API is"
 " still missing some information. Private APIs can only be viewed by the "
@@ -181,19 +182,19 @@ msgstr ""
 "puutteellisten tietojen vuoksi. Yksityiset rajapinnat näkyvät kaikille "
 "rajapinnan julkaisseen organisaation kirjautuneille jäsenille."
 
-#: ckanext/apis/translations.py:38
+#: ckanext/apis/translations.py:41
 msgid "API publisher"
 msgstr "Rajapinnan tuottaja"
 
-#: ckanext/apis/translations.py:39
+#: ckanext/apis/translations.py:42
 msgid "Select the organisation that provides the API."
 msgstr "Valitse rajapinnan tarjoava organisaatio."
 
-#: ckanext/apis/translations.py:40
+#: ckanext/apis/translations.py:43
 msgid "License for the data provided by the API"
 msgstr "Rajapinnan kautta tarjotun datan lisenssi"
 
-#: ckanext/apis/translations.py:41
+#: ckanext/apis/translations.py:44
 msgid ""
 "Select how the data that is available through the API is licensed. Use a <a "
 "href=\"https://creativecommons.org/licenses/by/4.0/deed.en\" "
@@ -210,11 +211,11 @@ msgstr ""
 "target=\"_blank\">CC0 lisenssiä</a>, jos haluat luopua kaikista "
 "käyttöoikeuksista dataasi."
 
-#: ckanext/apis/translations.py:42
+#: ckanext/apis/translations.py:49
 msgid "Keywords"
 msgstr "Avainsanat"
 
-#: ckanext/apis/translations.py:43
+#: ckanext/apis/translations.py:50
 msgid ""
 "Select at least one keyword relating to your data that helps users to find "
 "your API."
@@ -222,15 +223,15 @@ msgstr ""
 "Kirjoita ainakin yksi dataasi liittyvä avainsana, joka auttaa hyödyntäjiä "
 "löytämään rajapinnan. "
 
-#: ckanext/apis/translations.py:44
+#: ckanext/apis/translations.py:51
 msgid "e.g. maps"
 msgstr "esim. kartat"
 
-#: ckanext/apis/translations.py:45
+#: ckanext/apis/translations.py:52
 msgid "API access rights"
 msgstr "Rajapinnan käyttöehdot"
 
-#: ckanext/apis/translations.py:46
+#: ckanext/apis/translations.py:53
 msgid ""
 "Describe the possible restrictions in the use of the API and the pricing. For example, who can access the API, does the API require an API key, and where can users find it. \r\n"
 " Provide a link to the terms of service and to the possible service-level agreement (SLA) of the API."
@@ -238,19 +239,19 @@ msgstr ""
 "Kuvaile mahdollisia rajoitteita rajapinnan käytössä sekä hinnoittelua. Esimerkiksi, kuka voi saada pääsyn rajapintaan, tarvitseeko rajapinnan käyttö API-avaimen ja mistä avaimen voi saada.\r\n"
 "Lisää linkki rajapinnan käyttöehtoihin ja mahdolliseen palvelutasosopimukseen (SLA). "
 
-#: ckanext/apis/translations.py:47
+#: ckanext/apis/translations.py:56
 msgid "E.g. a link to the terms of service"
 msgstr "Esim. linkki käyttöehtoihin"
 
-#: ckanext/apis/translations.py:49
+#: ckanext/apis/translations.py:58
 msgid "Resource name"
 msgstr "Rajapinnan resurssin nimi"
 
-#: ckanext/apis/translations.py:50
+#: ckanext/apis/translations.py:59
 msgid "e.g. Finnish Service Catalogue OpenAPI description"
 msgstr "esim. Palvelutietovarannon OpenAPI-kuvaus"
 
-#: ckanext/apis/translations.py:51
+#: ckanext/apis/translations.py:60
 msgid ""
 "Give the resource a descriptive name. For example, Turku geospatial API "
 "OpenAPI description"
@@ -258,11 +259,11 @@ msgstr ""
 "Anna resurssille kuvaava nimi. Esimerkiksi Turun paikkatietorajapinnan "
 "OpenAPI-kuvaus tai Turun wfs-paikkatietorajapinnan osoite (endpoint)"
 
-#: ckanext/apis/translations.py:52
+#: ckanext/apis/translations.py:61
 msgid "Link to an API endpoint or API documentation"
 msgstr "Rajapinnan osoite (endpoint) tai linkki rajapinnan dokumentaatioon"
 
-#: ckanext/apis/translations.py:53
+#: ckanext/apis/translations.py:62
 msgid ""
 "Add a link to an API endpoint or API documentation, for example OpenAPI. You"
 " can also add more information about the API as a pdf-file."
@@ -271,23 +272,23 @@ msgstr ""
 "dokumentaatioon, esimerkiksi OpenAPI. Voit myös lisätä lisätietoja "
 "rajapinnasta pdf-tiedostona. "
 
-#: ckanext/apis/translations.py:54
+#: ckanext/apis/translations.py:64
 msgid "API data format"
 msgstr "Rajapinnan tarjoaman tiedon tiedostomuoto"
 
-#: ckanext/apis/translations.py:55
+#: ckanext/apis/translations.py:65
 msgid "Add the supported response formats."
 msgstr "Lisää tiedostomuodot, joissa rajapinta tarjoaa tietoa."
 
-#: ckanext/apis/translations.py:56
+#: ckanext/apis/translations.py:66
 msgid "Technical API description"
 msgstr "Rajapinnan tekninen kuvaus"
 
-#: ckanext/apis/translations.py:57
+#: ckanext/apis/translations.py:67
 msgid "Write a technical description for the API."
 msgstr "Kirjoita tekninen kuvaus rajapinnalle"
 
-#: ckanext/apis/translations.py:58
+#: ckanext/apis/translations.py:68
 msgid ""
 "Describe:<ul><li>What kind of data the API returns?</li><li>Which version of"
 " the API is in use?</li><li>Where can you find the technical documentation "
@@ -297,11 +298,11 @@ msgstr ""
 "versio rajapinnasta on käytössä?</li><li>Mistä löytää rajapinnan teknisen "
 "dokumentaation?</li></ul>"
 
-#: ckanext/apis/translations.py:59
+#: ckanext/apis/translations.py:70
 msgid "Does the API require registration?"
 msgstr "Vaatiiko rajapinnan käyttö rekisteröitymisen?"
 
-#: ckanext/apis/translations.py:60
+#: ckanext/apis/translations.py:71
 msgid ""
 "If your API requires registration, describe the registration process in the "
 "Description field."
@@ -343,8 +344,8 @@ msgid "Parameter '{parameter_name}' is not an integer"
 msgstr ""
 
 #: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288
-#: ckanext/apis/views.py:117 ckanext/apis/views.py:224
-#: ckanext/apis/views.py:236 ckanext/apis/views.py:322
+#: ckanext/apis/views.py:120 ckanext/apis/views.py:227
+#: ckanext/apis/views.py:239 ckanext/apis/views.py:325
 msgid "Apiset not found"
 msgstr "Rajapintaa ei löytynyt"
 
@@ -370,45 +371,45 @@ msgid_plural "The datasets have been added to the apiset."
 msgstr[0] "Tietoaineisto liitettiin rajapintaan."
 msgstr[1] "Tietoaineistot liitettiin rajapintaan."
 
-#: ckanext/apis/views.py:127 ckanext/apis/views.py:186
+#: ckanext/apis/views.py:130 ckanext/apis/views.py:189
 #, python-format
 msgid "User %r not authorized to edit %s"
 msgstr "Käyttäjällä %r ei ole oikeutta muokata %s"
 
-#: ckanext/apis/views.py:182 ckanext/apis/views.py:193
+#: ckanext/apis/views.py:185 ckanext/apis/views.py:196
 msgid "Dataset not found"
 msgstr "Tietoaineistoa ei löytynyt"
 
-#: ckanext/apis/views.py:324
+#: ckanext/apis/views.py:327
 #, python-format
 msgid "Unauthorized to read apiset %s"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:44
+#: ckanext/apis/logic/auth.py:43
 msgid "User {0} not authorized to edit apisets"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:53
+#: ckanext/apis/logic/auth.py:52
 msgid "User {0} not authorized to create apisets"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:62
+#: ckanext/apis/logic/auth.py:61
 msgid "User {0} not authorized to associate apisets"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:72
+#: ckanext/apis/logic/auth.py:71
 msgid "User {0} not authorized to delete apisets"
 msgstr ""
 
-#: ckanext/apis/logic/auth.py:81
+#: ckanext/apis/logic/auth.py:80
 msgid "User {0} not authorized to delete apiset associations"
 msgstr ""
 
-#: ckanext/apis/logic/converters.py:17 ckanext/apis/logic/validators.py:24
+#: ckanext/apis/logic/converters.py:16 ckanext/apis/logic/validators.py:24
 msgid "Not found"
 msgstr "Ei löytynyt"
 
-#: ckanext/apis/logic/converters.py:17 ckanext/apis/logic/validators.py:24
+#: ckanext/apis/logic/converters.py:16 ckanext/apis/logic/validators.py:24
 msgid "Dataset"
 msgstr "Tietoaineisto"
 
@@ -593,42 +594,42 @@ msgstr ""
 "href=\"https://creativecommons.org/publicdomain/zero/1.0/deed.fi\">Creative "
 "Commons CC0 1.0 -lisenssin</a> mukaisesti."
 
-#: ckanext/apis/templates/apiset/resource_read.html:38
+#: ckanext/apis/templates/apiset/resource_read.html:39
 msgid "From the dataset abstract"
 msgstr "Tietoaineiston yhteenvedosta"
 
-#: ckanext/apis/templates/apiset/resource_read.html:40
+#: ckanext/apis/templates/apiset/resource_read.html:41
 #, python-format
 msgid "Source: <a href=\"%(url)s\">%(dataset)s</a>"
 msgstr "Lähde: <a href=\"%(url)s\">%(dataset)s</a>"
 
-#: ckanext/apis/templates/apiset/resource_read.html:51
+#: ckanext/apis/templates/apiset/resource_read.html:52
 msgid "API User Guide"
 msgstr "Rajapinnan käyttöohje"
 
-#: ckanext/apis/templates/apiset/resource_read.html:62
+#: ckanext/apis/templates/apiset/resource_read.html:63
 msgid "Additional Information"
 msgstr "Lisätiedot"
 
-#: ckanext/apis/templates/apiset/resource_read.html:67
+#: ckanext/apis/templates/apiset/resource_read.html:68
 msgid "Last updated"
 msgstr "Viimeksi päivitetty"
 
-#: ckanext/apis/templates/apiset/resource_read.html:68
-#: ckanext/apis/templates/apiset/resource_read.html:74
-#: ckanext/apis/templates/apiset/resource_read.html:80
+#: ckanext/apis/templates/apiset/resource_read.html:69
+#: ckanext/apis/templates/apiset/resource_read.html:75
+#: ckanext/apis/templates/apiset/resource_read.html:81
 msgid "unknown"
 msgstr "tuntematon"
 
-#: ckanext/apis/templates/apiset/resource_read.html:73
+#: ckanext/apis/templates/apiset/resource_read.html:74
 msgid "Created"
 msgstr "Luotu"
 
-#: ckanext/apis/templates/apiset/resource_read.html:79
+#: ckanext/apis/templates/apiset/resource_read.html:80
 msgid "Format"
 msgstr "Muoto"
 
-#: ckanext/apis/templates/apiset/resource_read.html:85
+#: ckanext/apis/templates/apiset/resource_read.html:86
 msgid "License"
 msgstr "Lisenssi"
 

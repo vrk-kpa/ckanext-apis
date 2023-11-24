@@ -35,7 +35,7 @@ def _translations():
     _("API maintainer email")
     _("Enter the email address of the organisation's customer service, not an email address of an individual.")
     _("e.g. opendata@dvv.fi")
-    _("API visibility on opendata.fi")
+    _("API visibility on Suomi.fi Open Data")
     _("You can set the visibility to private temporarily, for example if the API is still missing some information. "
       "Private APIs can only be viewed by the members of the organisation that provides the API.")
     _("API publisher")
