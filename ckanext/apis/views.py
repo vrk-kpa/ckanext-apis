@@ -36,7 +36,7 @@ apis = Blueprint(
 
 class EditView(dataset.EditView):
 
-    def post(self, id):
+    def post(self, package_type, id):
         if tk.check_ckan_version(min_version='2.10.0'):
             context = self._prepare()
         else:
