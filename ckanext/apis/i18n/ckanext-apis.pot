@@ -1,14 +1,14 @@
 # Translations template for ckanext-apis.
-# Copyright (C) 2023 ORGANIZATION
+# Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the ckanext-apis project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apis 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-24 10:28+0000\n"
+"POT-Creation-Date: 2024-04-18 10:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -298,8 +298,10 @@ msgstr ""
 msgid "Parameter '{parameter_name}' is not an integer"
 msgstr ""
 
-#: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288 ckanext/apis/views.py:120
-#: ckanext/apis/views.py:227 ckanext/apis/views.py:239 ckanext/apis/views.py:325
+#: ckanext/apis/utils.py:258 ckanext/apis/utils.py:288 ckanext/apis/views.py:125
+#: ckanext/apis/views.py:190 ckanext/apis/views.py:201 ckanext/apis/views.py:231
+#: ckanext/apis/views.py:243 ckanext/apis/views.py:304 ckanext/apis/views.py:331
+#: ckanext/apis/views.py:347
 msgid "Apiset not found"
 msgstr ""
 
@@ -323,18 +325,23 @@ msgid_plural "The datasets have been added to the apiset."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ckanext/apis/views.py:130 ckanext/apis/views.py:189
+#: ckanext/apis/views.py:135 ckanext/apis/views.py:194
 #, python-format
 msgid "User %r not authorized to edit %s"
 msgstr ""
 
-#: ckanext/apis/views.py:185 ckanext/apis/views.py:196
-msgid "Dataset not found"
-msgstr ""
-
-#: ckanext/apis/views.py:327
+#: ckanext/apis/views.py:306
 #, python-format
 msgid "Unauthorized to read apiset %s"
+msgstr ""
+
+#: ckanext/apis/views.py:335 ckanext/apis/views.py:351
+#, python-format
+msgid "Unauthorized to delete apiset %s"
+msgstr ""
+
+#: ckanext/apis/views.py:338
+msgid "Apiset has been deleted."
 msgstr ""
 
 #: ckanext/apis/logic/auth.py:43
@@ -363,6 +370,18 @@ msgstr ""
 
 #: ckanext/apis/logic/converters.py:16 ckanext/apis/logic/validators.py:24
 msgid "Dataset"
+msgstr ""
+
+#: ckanext/apis/templates/apiset/confirm_delete.html:5
+msgid "Are you sure you want to delete apiset - {name}?"
+msgstr ""
+
+#: ckanext/apis/templates/apiset/confirm_delete.html:8
+msgid "Cancel"
+msgstr ""
+
+#: ckanext/apis/templates/apiset/confirm_delete.html:9
+msgid "Confirm Delete"
 msgstr ""
 
 #: ckanext/apis/templates/apiset/edit_base.html:7
