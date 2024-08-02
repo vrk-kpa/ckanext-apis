@@ -10,7 +10,6 @@ from . import helpers
 from ckanext.apis.logic import auth
 import os
 import sys
-from ckanext.apis.logic.converters import save_to_groups
 
 
 class ApisPlugin(plugins.SingletonPlugin):
@@ -22,7 +21,6 @@ class ApisPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.ITranslation)
     plugins.implements(plugins.IAuthFunctions)
-    plugins.implements(plugins.IValidators)
 
 
     # IBlueprint
@@ -52,13 +50,6 @@ class ApisPlugin(plugins.SingletonPlugin):
                 'apiset_package_association_delete': delete.apiset_package_association_delete,
                 'apiset_format_autocomplete': get.apiset_format_autocomplete,
                 }
-
-    # IValidators
-    def get_validators(self):
-        return {
-            # NOTE: this is a converter. (https://github.com/vrk-kpa/ckanext-scheming/#validators)
-            'save_to_groups': save_to_groups,
-        }   
 
     def before_search(self, search_params):
         '''CKAN <2.10 compatibility method'''
