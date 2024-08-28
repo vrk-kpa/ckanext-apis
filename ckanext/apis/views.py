@@ -234,10 +234,10 @@ class GroupView(CkanDatasetGroupView):
     def post(self, package_type, id):
         context, pkg_dict = self._prepare(id)
 
-        category_list = request.form.getlist('categories')
+        category_list = request.form.getlist('groups')
         group_list = [{'name': c} for c in category_list]
         try:
-            get_action('apiset_patch')(context, {"id": id, "groups": group_list, "category": category_list})
+            get_action('apiset_patch')(context, {"id": id, "groups": group_list})
             return h.redirect_to('apiset_groups', id=id)
         except (ObjectNotFound, NotAuthorized):
             return abort(404, _('Apiset not found'))
