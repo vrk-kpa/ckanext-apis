@@ -6,6 +6,9 @@ from ckanext.apis.logic.schema import apiset_package_list_schema, package_apiset
 from ckanext.apis.model import ApisetPackageAssociation
 from collections import Counter
 
+import logging
+log = logging.getLogger(__name__)
+
 _and_ = sqlalchemy.and_
 _func = sqlalchemy.func
 
@@ -20,6 +23,9 @@ def apiset_list(context, data_dict):
          .filter(model.Package.type == 'apiset')
          .filter(model.Package.private == False) # noqa
          .filter(model.Package.state == 'active'))
+
+    all_fields = toolkit.asbool(data_dict.get('all_fields', True))
+
     limit = data_dict.get('limit')
     if limit:
         q = q.limit(limit)
@@ -27,7 +33,10 @@ def apiset_list(context, data_dict):
     if offset:
         q = q.offset(offset)
 
-    return [model_dictize.package_dictize(pkg, context) for pkg in q.all()]
+    if all_fields:
+        return [model_dictize.package_dictize(pkg, context) for pkg in q.all()]
+
+    return [pkg.name for pkg in q.all()]
 
 @toolkit.side_effect_free
 def apiset_package_list(context, data_dict):
