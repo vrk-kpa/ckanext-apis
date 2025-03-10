@@ -19,12 +19,17 @@ def apiset_show(context, data_dict):
 @toolkit.side_effect_free
 def apiset_list(context, data_dict):
     model = context["model"]
-    q = (model.Session.query(model.Package)
+
+    all_fields = toolkit.asbool(data_dict.get('all_fields', True))
+
+    model_to_query = model.Package.name
+    if all_fields:
+        model_to_query = model.Package
+
+    q = (model.Session.query(model_to_query)
          .filter(model.Package.type == 'apiset')
          .filter(model.Package.private == False) # noqa
          .filter(model.Package.state == 'active'))
-
-    all_fields = toolkit.asbool(data_dict.get('all_fields', True))
 
     limit = data_dict.get('limit')
     if limit:
