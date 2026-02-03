@@ -1,13 +1,7 @@
-import logging
-
 from ckan.model.domain_object import DomainObject
 from ckan.model.meta import Session, metadata
 from sqlalchemy import Column, ForeignKey, types
 from sqlalchemy.ext.declarative import declarative_base
-
-from ckan import model
-
-log = logging.getLogger(__name__)
 
 Base = declarative_base(metadata=metadata)
 
