@@ -5,7 +5,6 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from .logic.action import get, create, update, delete
 from . import views
-from ckanext.apis.model import setup as model_setup
 from . import helpers
 from ckanext.apis.logic import auth
 import os
@@ -13,7 +12,6 @@ import sys
 
 
 class ApisPlugin(plugins.SingletonPlugin):
-    plugins.implements(plugins.IConfigurable)
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IPackageController, inherit=True)
@@ -27,15 +25,11 @@ class ApisPlugin(plugins.SingletonPlugin):
     def get_blueprint(self):
         return views.get_blueprint()
 
-    # IConfigurable
-    def configure(self, config):
-        model_setup()
-
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'apis')
-        
+
     def get_actions(self):
         return {
                 'apiset_show': get.apiset_show,

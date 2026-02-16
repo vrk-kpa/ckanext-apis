@@ -128,7 +128,8 @@ class EditView(dataset.EditView):
         resources_json = h.json.dumps(data.get(u'resources', []))
 
         try:
-            check_access(u'package_update', context)
+            check_access('package_update', context,
+                         {"id": pkg_dict.get('id')})
         except NotAuthorized:
             return base.abort(
                 403,
@@ -364,9 +365,12 @@ class DeleteView(CkanDatasetDeleteView):
         )
 
 
+def download(id, resource_id, filename=None, package_type='apiset'):
+    return tk.redirect_to('dataset_resource.download', id=id, resource_id=resource_id, filename=filename)
 
 
-
+apis.add_url_rule('/<id>/resource/<resource_id>/download/<filename>', view_func=download, methods=['GET'])
+apis.add_url_rule('/<id>/resource/<resource_id>/download', view_func=download, methods=['GET'])
 apis.add_url_rule('/manage_datasets/<id>', view_func=manage_datasets, methods=[u'GET', u'POST'])
 apis.add_url_rule('/edit/<id>', view_func=EditView.as_view('edit'), methods=[u'GET', u'POST'])
 apis.add_url_rule('/resources/<id>', view_func=resources)
